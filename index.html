@@ -1,0 +1,1649 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>First Ally Corporate Banking</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['"Plus Jakarta Sans"', "sans-serif"],
+            },
+            colors: {
+              gold: {
+                400: "#EBCB4B",
+                500: "#D9B938",
+                600: "#C5A620",
+                DEFAULT: "#D0AF21",
+                700: "#A08610",
+              },
+              dark: {
+                900: "#0F1115",
+                800: "#1A1D24",
+              },
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      /* Custom pattern for background */
+      .bg-pattern {
+        background-color: #ffffff;
+        background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23C5A620' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+      }
+
+      /* Scrollbar for chat */
+      .scrollbar-hide::-webkit-scrollbar {
+        display: none;
+      }
+      .scrollbar-hide {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+      }
+
+      /* Custom scrollbar for modals */
+      .custom-scrollbar::-webkit-scrollbar {
+        width: 6px;
+      }
+      .custom-scrollbar::-webkit-scrollbar-track {
+        background: transparent;
+      }
+      .custom-scrollbar::-webkit-scrollbar-thumb {
+        background-color: rgba(208, 175, 33, 0.5);
+        border-radius: 10px;
+      }
+      .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+        background-color: rgba(208, 175, 33, 0.8);
+      }
+
+      /* Animations */
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+      @keyframes zoomIn {
+        from {
+          opacity: 0;
+          transform: scale(0.95);
+        }
+        to {
+          opacity: 1;
+          transform: scale(1);
+        }
+      }
+      .animate-fade-in-up {
+        animation: fadeInUp 0.3s ease-out forwards;
+      }
+      .animate-fade-in {
+        animation: fadeIn 0.2s ease-out forwards;
+      }
+      .animate-zoom-in {
+        animation: zoomIn 0.2s ease-out forwards;
+      }
+
+      /* Prevent body scroll when modal is open */
+      body.modal-open {
+        overflow: hidden;
+      }
+    </style>
+    <script type="importmap">
+      {
+        "imports": {
+          "@google/genai": "https://aistudiocdn.com/@google/genai@^1.30.0"
+        }
+      }
+    </script>
+  </head>
+  <body class="bg-white font-sans text-slate-900 selection:bg-gold-200">
+    <!-- Navbar -->
+    <nav
+      class="sticky top-0 z-40 bg-white/95 backdrop-blur-sm border-b border-gray-100 py-4"
+    >
+      <div
+        class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between"
+      >
+        <!-- Logo -->
+        <div class="flex items-center gap-2">
+          <div class="flex flex-col">
+            <img
+              src="/assets/473e8e2e3ccc689b56c809c3662933269147500d.png"
+              alt="First Ally MFB Logo"
+              class="h-10 object-contain"
+            />
+          </div>
+        </div>
+
+        <!-- Desktop Links -->
+        <div class="hidden md:flex items-center gap-8">
+          <a href="#" class="text-gold font-semibold text-sm">Home</a>
+          <a
+            href="https://first-allymfb.com/faqs/"
+            class="text-slate-600 hover:text-gold font-medium text-sm transition-colors"
+            >FAQ</a
+          >
+          <a
+            href="mailto:info@first-allymfb.com"
+            class="text-slate-600 hover:text-gold font-medium text-sm transition-colors"
+            >Contact Us</a
+          >
+          <a
+            href="https://firstallymfb-corporate.lucidbanking.com/login"
+            target="_blank"
+            class="decoration:none"
+          >
+            <button
+              class="bg-gold hover:bg-gold-700 text-white px-6 py-2.5 rounded font-semibold transition-colors text-sm shadow-md"
+            >
+              Login
+            </button>
+          </a>
+        </div>
+
+        <!-- Mobile Menu Button -->
+        <button id="mobile-menu-btn" class="md:hidden p-2 text-slate-600">
+          <i data-lucide="menu" id="menu-icon"></i>
+          <i data-lucide="x" id="close-icon" class="hidden"></i>
+        </button>
+      </div>
+
+      <!-- Mobile Menu -->
+      <div
+        id="mobile-menu"
+        class="hidden md:hidden absolute top-full left-0 w-full bg-white border-b border-gray-100 p-4 flex-col gap-4 shadow-lg animate-fade-in-up"
+      >
+        <a href="#" class="text-gold font-semibold">Home</a>
+        <a href="https://first-allymfb.com/faqs/" class="text-slate-600">FAQ</a>
+        <a href="#" class="text-slate-600">Contact Us</a>
+        <a
+          href="https://firstallymfb-corporate.lucidbanking.com/login"
+          target="_blank"
+          class="decoration:none"
+        >
+          <button
+            class="bg-gold text-white px-6 py-2 rounded font-semibold w-full"
+          >
+            Login
+          </button>
+        </a>
+      </div>
+    </nav>
+
+    <main>
+      <!-- Hero -->
+      <section class="relative pt-12 pb-10 overflow-hidden">
+        <!-- Pattern background -->
+        <div class="absolute inset-0 -z-30">
+          <div
+            class="absolute inset-0 -z-50 bg-cover bg-center opacity-40"
+            style="background-image: url('/assets/Clip path group.png')"
+          ></div>
+        </div>
+
+        <!-- Circles frame -->
+        <div
+          class="pointer-events-none absolute -top-50 right-1/3 w-[700px] h-[700px] -z-20"
+        >
+          <img
+            src="/assets/Frame 111.png"
+            alt=""
+            class="w-full h-full object-contain opacity-90"
+          />
+        </div>
+
+        <div class="relative pt-12 pb-20">
+          <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+              <!-- Text Content -->
+              <div class="relative z-10">
+                <div class="flex items-center gap-2 mb-6">
+                  <span class="w-1.5 h-1.5 rounded-full bg-gold"></span>
+                  <span
+                    class="text-gold font-semibold text-sm uppercase tracking-wide"
+                    >Corporate Banking Solution</span
+                  >
+                </div>
+
+                <h1
+                  class="text-5xl sm:text-6xl font-extrabold text-slate-900 leading-[1.1] mb-6"
+                >
+                  All your business banking in one place
+                </h1>
+
+                <p class="text-lg text-slate-600 mb-8 max-w-lg leading-relaxed">
+                  Simplify cash flow, streamline tasks, and manage every account
+                  from a single, secure platform.
+                </p>
+
+                <div class="flex flex-col sm:flex-row gap-4">
+                  <button
+                    onclick="openModal('openAccount')"
+                    class="bg-gold hover:bg-gold-700 text-white px-6 py-2.5 rounded font-bold transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
+                  >
+                    Open Corporate Account
+                  </button>
+                  <button
+                    onclick="openModal('requestAccess')"
+                    class="bg-white border border-slate-200 hover:border-gold hover:text-gold text-slate-700 px-6 py-2.5 rounded font-bold transition-all shadow-sm"
+                  >
+                    Request Online Banking Access
+                  </button>
+                </div>
+              </div>
+
+              <!-- Image Content -->
+              <div class="relative mt-12 lg:mt-0 z-10">
+                <div class="relative z-10 rounded-3xl overflow-hidden">
+                  <div class="relative h-[500px] w-full">
+                    <img
+                      src="/assets/Subtract.png"
+                      alt="Corporate Banker"
+                      class="w-full h-full object-cover opacity-90"
+                    />
+                    <!-- Overlay Gradient -->
+                    <div
+                      class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"
+                    ></div>
+
+                    <!-- Floating Badges -->
+                    <div
+                      class="absolute top-8 right-8 bg-white/20 backdrop-blur-md border border-white/30 rounded-full px-4 py-1.5 flex items-center gap-2 text-white text-sm font-medium"
+                    >
+                      <div class="bg-green-400 rounded-full p-0.5">
+                        <i
+                          data-lucide="zap"
+                          class="w-3 h-3 text-white fill-current"
+                        ></i>
+                      </div>
+                      Fast
+                    </div>
+
+                    <div
+                      class="absolute top-1/2 left-8 -translate-y-1/2 bg-white/90 backdrop-blur-sm rounded-lg px-4 py-2 flex items-center gap-2 shadow-lg"
+                    >
+                      <div class="bg-green-500 rounded-full p-1">
+                        <i
+                          data-lucide="shield-check"
+                          class="w-4 h-4 text-white"
+                        ></i>
+                      </div>
+                      <span class="font-bold text-slate-800 text-sm"
+                        >Secure</span
+                      >
+                    </div>
+
+                    <!-- Bottom Stats -->
+                    <div
+                      class="absolute bottom-0 left-0 w-full p-6 sm:p-8 bg-white/10 backdrop-blur-md border-t border-white/10"
+                    >
+                      <div class="flex items-center gap-4">
+                        <div class="flex -space-x-3">
+                          <img
+                            src="https://picsum.photos/50/50?random=1"
+                            class="w-10 h-10 rounded-full border-2 border-slate-800 object-cover"
+                            alt="User"
+                          />
+                          <img
+                            src="https://picsum.photos/50/50?random=2"
+                            class="w-10 h-10 rounded-full border-2 border-slate-800 object-cover"
+                            alt="User"
+                          />
+                          <img
+                            src="https://picsum.photos/50/50?random=3"
+                            class="w-10 h-10 rounded-full border-2 border-slate-800 object-cover"
+                            alt="User"
+                          />
+                          <img
+                            src="https://picsum.photos/50/50?random=4"
+                            class="w-10 h-10 rounded-full border-2 border-slate-800 object-cover"
+                            alt="User"
+                          />
+                        </div>
+                        <div>
+                          <p
+                            class="text-white font-medium text-sm sm:text-base"
+                          >
+                            More than 900k People use First Ally Corporate
+                            banking.
+                          </p>
+                          <p class="text-white/80 text-sm">
+                            We are waiting for you!
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Benefits -->
+      <section class="py-20 bg-gray-50/50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="flex items-center gap-2 mb-4">
+            <span class="w-1.5 h-1.5 rounded-full bg-gold"></span>
+            <span
+              class="text-gold font-semibold text-sm uppercase tracking-wide"
+              >Corporate Banking</span
+            >
+          </div>
+          <h2 class="text-4xl md:text-5xl font-bold text-slate-900 mb-12">
+            Our Benefits
+          </h2>
+
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 auto-rows-auto">
+            <!-- Card 1 -->
+            <div
+              class="lg:col-span-8 rounded-3xl p-6 relative overflow-hidden flex flex-col justify-between bg-[#111111] text-white min-h-[300px]"
+            >
+              <img
+                src="/assets/Clip path group.png"
+                alt=""
+                class="absolute inset-0 w-full h-full object-cover"
+              />
+
+              <div
+                class="relative z-10 flex flex-col md:flex-row items-center gap-6 h-full"
+              >
+                <div class="flex-1 max-w-lg">
+                  <h3 class="text-4xl sm:text-5xl font-bold mb-4 text-white">
+                    Convenient
+                  </h3>
+                  <p class="leading-relaxed font-medium mb-6 text-gray-300">
+                    We offer streamlined, efficient services and tools that save
+                    time and reduce effort for businesses, like instant
+                    transfers, easy cash management, and accessible online
+                    platforms.
+                  </p>
+                </div>
+                <div class="w-full md:w-1/2 max-w-sm">
+                  <img
+                    src="/assets/Convenient-Pics.png"
+                    alt="Convenient"
+                    class="w-full h-full max-h-64 object-cover rounded-2xl"
+                  />
+                </div>
+              </div>
+            </div>
+
+            <!-- Card 2 -->
+            <div
+              class="lg:col-span-4 rounded-3xl p-8 relative overflow-hidden flex flex-col justify-between bg-white border border-gray-100 shadow-sm text-slate-900 min-h-[300px]"
+            >
+              <div class="relative z-10 max-w-lg mt-auto">
+                <h3 class="text-3xl font-bold">Fast</h3>
+                <div class="bg-gray-200/50 p-6 rounded-xl mt-10">
+                  <p class="text-slate-700 leading-relaxed font-medium">
+                    Swiftly moving money and services for large businesses, with
+                    secure, scalable solutions in corporate banking.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Card 3 -->
+            <div
+              class="lg:col-span-4 rounded-3xl p-8 relative overflow-hidden flex flex-col justify-between bg-white border border-gray-100 shadow-sm text-slate-900 min-h-[300px]"
+            >
+              <div class="relative z-10 max-w-lg mt-auto">
+                <h3 class="text-3xl font-bold">Secure</h3>
+                <div class="bg-gray-200/50 p-6 rounded-xl mt-10">
+                  <p class="text-slate-700 leading-relaxed font-medium">
+                    Responsible for protecting all money, data, and transactions
+                    from threats so businesses can operate safely and
+                    confidently.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Card 4 -->
+            <div
+              class="lg:col-span-8 rounded-3xl p-6 relative overflow-hidden flex flex-col justify-between bg-[#FEF6D7] text-slate-900 min-h-[300px]"
+            >
+              <div class="flex flex-col md:flex-row items-center gap-6 h-full">
+                <div class="flex-1 max-w-lg">
+                  <h3
+                    class="text-4xl sm:text-5xl font-bold mb-4 text-[#21303A]"
+                  >
+                    Business Report
+                  </h3>
+                  <p class="text-[#323E48] leading-relaxed font-medium mb-6">
+                    We provide a clear, concise document that analyzes a
+                    business financial health, creditworthiness, and banking
+                    needs.
+                  </p>
+                </div>
+                <div class="w-full md:w-1/3">
+                  <img
+                    src="/assets/Graph.png"
+                    alt="Business report"
+                    class="w-full h-full max-h-48 object-cover rounded-2xl"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- CTA Section -->
+      <section class="py-20 bg-[#FFFDF6]">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div
+            class="flex flex-col md:flex-row items-center justify-between gap-8 md:gap-12 mb-16"
+          >
+            <div class="flex-1">
+              <div class="flex items-center gap-2 mb-4">
+                <span class="w-2 h-2 rounded-full bg-gold"></span>
+                <span
+                  class="text-gold font-semibold text-sm uppercase tracking-wide"
+                >
+                  Corporate Account
+                </span>
+              </div>
+              <h2 class="text-3xl md:text-5xl font-bold text-slate-300 mb-2">
+                Online Banking That Takes
+              </h2>
+              <h2 class="text-3xl md:text-5xl font-bold text-slate-900">
+                You to the Next Level
+              </h2>
+            </div>
+          </div>
+
+          <div class="flex flex-col gap-8">
+            <!-- Card 1 -->
+            <div
+              class="flex flex-col md:flex-row items-center min-h-[400px] relative bg-dark-900 rounded-[2.5rem] overflow-hidden group border-gold border-2 transition-transform hover:scale-[1.01]"
+            >
+              <div class="flex-1 relative z-10 p-8 md:p-16">
+                <div
+                  class="inline-block bg-[#E5D7A9] text-xs font-bold text-slate-900 px-3 py-1 rounded-full mb-6 uppercase tracking-wider"
+                >
+                  <div class="flex items-center gap-3">
+                    <span class="w-2 h-2 rounded-full bg-dark-900"></span> Open
+                    Account
+                  </div>
+                </div>
+
+                <h3
+                  class="text-3xl md:text-4xl font-bold text-white mb-8 leading-tight"
+                >
+                  Open a new corporate account with the Bank.
+                </h3>
+
+                <button
+                  onclick="openModal('openAccount')"
+                  class="bg-gold hover:bg-gold-700 text-white pl-6 pr-2 py-2 rounded-full font-bold flex items-center gap-4 transition-all group-hover:pl-8"
+                >
+                  <span>Open Corporate Account</span>
+                  <span class="bg-white text-gold rounded-full p-2">
+                    <i
+                      data-lucide="arrow-up-right"
+                      class="w-[18px] h-[18px]"
+                    ></i>
+                  </span>
+                </button>
+              </div>
+
+              <div
+                class="absolute bottom-0 right-[50%] md:right-[50%] w-[50%] h-full -z-10 overflow-hidden"
+              >
+                <img
+                  src="/assets/Clip path group.png"
+                  alt=""
+                  class="absolute top-0 left-0 w-full h-full object-cover opacity-20"
+                />
+              </div>
+
+              <div
+                class="relative w-full md:w-1/2 min-h-[400px] overflow-hidden"
+              >
+                <img
+                  src="/assets/Open Account Pic-1.png"
+                  alt="Open Account"
+                  class="absolute top-0 right-0 h-full w-full object-cover"
+                />
+              </div>
+            </div>
+
+            <!-- Card 2 -->
+            <div
+              class="group relative rounded-[2.5rem] overflow-hidden bg-gold min-h-[200px] flex flex-col md:flex-row-reverse items-center border-dark-900 border-2 transition-transform hover:scale-[1.01]"
+            >
+              <div class="absolute top-0 right-0 w-full h-full">
+                <div
+                  class="absolute inset-0 bg-cover bg-center opacity-40"
+                  style="background-image: url('/assets/Layer 1.png')"
+                ></div>
+              </div>
+
+              <div
+                class="p-8 md:pr-8 md:pl-16 flex-1 relative z-10 text-right md:text-left"
+              >
+                <div
+                  class="inline-block bg-white/90 backdrop-blur-sm text-xs font-bold text-gold-700 px-3 py-1 rounded-full mb-6 uppercase tracking-wider"
+                >
+                  <div class="flex items-center gap-2">
+                    <span class="w-2 h-2 rounded-full bg-gold"></span>
+                    Online Access
+                  </div>
+                </div>
+                <h3
+                  class="text-3xl md:text-4xl font-bold text-white mb-8 leading-tight"
+                >
+                  Activate online access for your existing corporate account
+                </h3>
+                <button
+                  onclick="openModal('requestAccess')"
+                  class="bg-white text-gold hover:bg-slate-50 pl-6 pr-2 py-2 rounded-full font-bold flex items-center gap-4 transition-all group-hover:pl-8 ml-auto md:ml-0"
+                >
+                  <span>Request Online Banking Access</span>
+                  <span class="bg-gold text-white rounded-full p-2">
+                    <i
+                      data-lucide="arrow-up-right"
+                      class="w-[18px] h-[18px]"
+                    ></i>
+                  </span>
+                </button>
+              </div>
+
+              <div
+                class="relative w-full md:w-1/2 min-h-[750px] overflow-hidden"
+              >
+                <img
+                  src="/assets/Open Account Pic-2.png"
+                  alt="Online Access"
+                  class="absolute top-0 left-0 h-[800px] w-auto object-cover"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-dark-900 text-white pt-20 pb-10">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div
+          class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16"
+        >
+          <!-- Get In Touch -->
+          <div>
+            <h4
+              class="text-sm font-bold uppercase tracking-widest mb-8 text-gray-400"
+            >
+              Get in Touch
+            </h4>
+            <div class="space-y-6 text-sm text-gray-300">
+              <div class="flex gap-3">
+                <i data-lucide="map-pin" class="shrink-0 w-5 h-5 text-gold"></i>
+                <a
+                  href="https://maps.app.goo.gl/q3unzQFPJ6JAi2bB8"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="hover:text-gold-500 transition-colors"
+                  >32, Ikorodu Road, Jibowu, Lagos.</a
+                >
+              </div>
+              <div class="flex gap-3">
+                <i data-lucide="map-pin" class="shrink-0 w-5 h-5 text-gold"></i>
+                <a
+                  href="https://www.google.com/maps/place/Asiwaju+House/@6.4511199,3.3981777,17z/data=!3m1!4b1!4m6!3m5!1s0x103b8b3d156df3c1:0xf567cf6c63eb64ca!8m2!3d6.4511146!4d3.4007526!16s%2Fg%2F11gbt_g0f9?entry=ttu&g_ep=EgoyMDI1MDcxNi4wIKXMDSoASAFQAw%3D%3D"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="hover:text-gold-500 transition-colors"
+                  >26, Lewis Street, Asiwaju House, Lagos Island, Lagos</a
+                >
+              </div>
+              <div class="flex gap-3">
+                <i data-lucide="map-pin" class="shrink-0 w-5 h-5 text-gold"></i>
+                <a
+                  href="https://www.google.com/maps/place/67+Ogunlana+Dr,+Surulere,+Lagos+101241,+Lagos,+Nigeria/@6.5075683,3.3501737,17z/data=!3m1!4b1!4m6!3m5!1s0x103b8c3c6b51d1ef:0x9a39d7576d05efb5!8m2!3d6.507563!4d3.3527486!16s%2Fg%2F11h56c4_4_?entry=ttu&g_ep=EgoyMDI1MDcxNi4wIKXMDSoASAFQAw%3D%3D"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="hover:text-gold-500 transition-colors"
+                  >67, Ogunlana Drive, Surulere, Lagos</a
+                >
+              </div>
+              <div class="flex gap-3">
+                <i data-lucide="map-pin" class="shrink-0 w-5 h-5 text-gold"></i>
+                <a
+                  href="https://www.google.com/maps/place/New+Garage,+1+Shomuyiwa+St,+Bariga,+Lagos+100242,+Lagos,+Nigeria/@6.5478346,3.3911992,17z/data=!4m15!1m8!3m7!1s0x103b8d6c8595119d:0xe1e48f6ebcfb2876!2sNew+Garage,+1+Shomuyiwa+St,+Bariga,+Lagos+100242,+Lagos,+Nigeria!3b1!8m2!3d6.5478293!4d3.3937741!16s%2Fg%2F11q2n7b_yd!3m5!1s0x103b8d6c8595119d:0xe1e48f6ebcfb2876!8m2!3d6.5478293!4d3.3937741!16s%2Fg%2F11q2n7b_yd?entry=ttu&g_ep=EgoyMDI1MDcxNi4wIKXMDSoASAFQAw%3D%3D"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="hover:text-gold-500 transition-colors"
+                  >No 1, Somuyiwa street, Bariga, Lagos</a
+                >
+              </div>
+              <div class="flex gap-3">
+                <i data-lucide="phone" class="shrink-0 w-5 h-5 text-gold"></i>
+                <div class="flex flex-col">
+                  <a
+                    href="tel:+2348075809060"
+                    class="hover:text-gold-500 transition-colors"
+                    >+234 807 580 9060</a
+                  >
+                  <a
+                    href="tel:+2349055998221"
+                    class="hover:text-gold-500 transition-colors"
+                    >+234 905 599 8221</a
+                  >
+                </div>
+              </div>
+              <div class="flex gap-3">
+                <i data-lucide="mail" class="shrink-0 w-5 h-5 text-gold"></i>
+                <a
+                  href="mailto:info@first-allymfb.com"
+                  class="hover:text-gold-500 transition-colors"
+                  >info@first-allymfb.com</a
+                >
+              </div>
+            </div>
+          </div>
+
+          <!-- Quick Links -->
+          <div>
+            <h4
+              class="text-sm font-bold uppercase tracking-widest mb-8 text-gray-400"
+            >
+              Quick Links
+            </h4>
+            <ul class="space-y-4 text-sm text-gray-300">
+              <li>
+                <a
+                  href="https://personaltrustmfb.qoreonline.com/login"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="hover:text-gold-500 transition-colors"
+                  >Internet Banking</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://first-allymfb.com/careers/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="hover:text-gold-500 transition-colors"
+                  >Careers</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://first-allymfb.com/forms/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="hover:text-gold-500 transition-colors"
+                  >Forms</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://first-allymfb.com/news/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="hover:text-gold-500 transition-colors"
+                  >News</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://docs.google.com/forms/d/1fyR74TjeQR7ngnlHUqib5xbr-Gae_ACjWG9l5fMnbZM/viewform?edit_requested=true"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="hover:text-gold-500 transition-colors"
+                  >NIN Update</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://first-allymfb.com/faqs/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="hover:text-gold-500 transition-colors font-semibold"
+                  >FAQs</a
+                >
+              </li>
+              <li>
+                <a
+                  href="mailto:info@first-allymfb.com"
+                  class="hover:text-gold-500 transition-colors"
+                  >Complaints</a
+                >
+              </li>
+            </ul>
+            <div class="flex gap-2 mt-8">
+              <a
+                href="https://apps.apple.com/ng/app/first-ally-trust-mobile/id1457721552?platform=iphone"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="bg-black border border-gray-700 rounded p-1 hover:border-gray-500 transition-colors"
+              >
+                <img
+                  src="https://upload.wikimedia.org/wikipedia/commons/3/3c/Download_on_the_App_Store_Badge.svg"
+                  alt="App Store"
+                  class="h-8"
+                />
+              </a>
+              <a
+                href="https://play.google.com/store/apps/details?id=com.personaltrustmfb.personaltrustmfbmobile"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="bg-black border border-gray-700 rounded p-1 hover:border-gray-500 transition-colors"
+              >
+                <img
+                  src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg"
+                  alt="Play Store"
+                  class="h-8"
+                />
+              </a>
+            </div>
+          </div>
+
+          <!-- Our Group -->
+          <div>
+            <h4
+              class="text-sm font-bold uppercase tracking-widest mb-8 text-gray-400"
+            >
+              Our Group
+            </h4>
+            <ul class="space-y-4 text-sm text-gray-300">
+              <li>
+                <a
+                  href="https://first-ally.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="hover:text-gold-500 transition-colors"
+                  >First Ally Capital</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://first-allyadvisory.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="hover:text-gold-500 transition-colors"
+                  >First Ally Advisory</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://first-allytrustees.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="hover:text-gold-500 transition-colors"
+                  >First Ally Trustees</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://first-allyasset.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="hover:text-gold-500 transition-colors"
+                  >First Ally Asset Management</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://first-allyproperties.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="hover:text-gold-500 transition-colors"
+                  >First Ally Properties</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <!-- Newsletter -->
+          <div>
+            <h4
+              class="text-sm font-bold uppercase tracking-widest mb-8 text-gray-400"
+            >
+              Newsletter Subscription
+            </h4>
+            <form class="space-y-4" onsubmit="event.preventDefault();">
+              <input
+                type="text"
+                placeholder="Your name"
+                class="w-full bg-white px-4 py-3 text-slate-900 rounded focus:outline-none focus:ring-2 focus:ring-gold-500"
+              />
+              <input
+                type="email"
+                placeholder="Your email address"
+                class="w-full bg-white px-4 py-3 text-slate-900 rounded focus:outline-none focus:ring-2 focus:ring-gold-500"
+              />
+              <div class="flex items-start gap-3">
+                <input type="checkbox" id="consent" class="mt-1 accent-gold" />
+                <label
+                  for="consent"
+                  class="text-xs text-gray-400 leading-tight"
+                >
+                  By submitting this form, you agree that First Ally Trust
+                  Microfinance Bank may collect, store, and process your
+                  personal information.
+                </label>
+              </div>
+              <button
+                class="w-full bg-gold hover:bg-gold-700 text-white font-bold py-3 rounded transition-colors uppercase tracking-wide text-sm"
+              >
+                Subscribe
+              </button>
+            </form>
+          </div>
+        </div>
+
+        <!-- Social Media Links -->
+        <div class="border-t border-gray-800 pt-8 pb-8">
+          <div class="flex justify-center gap-6">
+            <a
+              href="https://www.facebook.com/firstallytrustmicrofinancebank/"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-gold transition-colors group"
+              aria-label="Facebook"
+            >
+              <svg
+                class="w-5 h-5 text-gray-300 group-hover:text-white"
+                fill="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"
+                />
+              </svg>
+            </a>
+            <a
+              href="https://www.linkedin.com/company/firstally-mfb/"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-gold transition-colors group"
+              aria-label="LinkedIn"
+            >
+              <svg
+                class="w-5 h-5 text-gray-300 group-hover:text-white"
+                fill="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"
+                />
+              </svg>
+            </a>
+            <a
+              href="https://www.instagram.com/firstally_mfb/"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-gold transition-colors group"
+              aria-label="Instagram"
+            >
+              <svg
+                class="w-5 h-5 text-gray-300 group-hover:text-white"
+                fill="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"
+                />
+              </svg>
+            </a>
+          </div>
+        </div>
+
+        <div
+          class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center text-xs text-gray-500 gap-4"
+        >
+          <p>
+            Copyright © First Ally Trust Microfinance Bank. All rights reserved.
+          </p>
+          <div class="flex gap-6">
+            <a href="#" class="hover:text-white transition-colors"
+              >Whistleblowing Policy</a
+            >
+            <a href="#" class="hover:text-white transition-colors"
+              >Privacy Policy</a
+            >
+            <a href="#" class="hover:text-white transition-colors"
+              >Terms & Conditions</a
+            >
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Chat Widget -->
+    <div class="fixed bottom-6 right-6 z-50 flex flex-col items-end">
+      <!-- Chat Window -->
+      <div
+        id="chat-container"
+        class="hidden bg-white rounded-2xl shadow-2xl border border-gray-100 w-[350px] h-[500px] mb-4 flex-col overflow-hidden"
+      >
+        <!-- Header -->
+        <div class="bg-gold p-4 flex justify-between items-center text-white">
+          <div class="flex items-center gap-3">
+            <div
+              class="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center"
+            >
+              <i data-lucide="message-circle" class="w-[18px] h-[18px]"></i>
+            </div>
+            <div>
+              <h3 class="font-bold text-sm">First Ally Assistant</h3>
+              <p class="text-[10px] text-white/80 flex items-center gap-1">
+                <span class="w-1.5 h-1.5 bg-green-400 rounded-full"></span>
+                Online
+              </p>
+            </div>
+          </div>
+          <button
+            id="close-chat-btn"
+            class="hover:bg-white/10 p-1 rounded transition-colors"
+          >
+            <i data-lucide="x" class="w-5 h-5"></i>
+          </button>
+        </div>
+
+        <!-- Messages -->
+        <div
+          id="chat-messages"
+          class="flex-1 overflow-y-auto p-4 space-y-4 bg-gray-50 scrollbar-hide"
+        >
+          <div class="flex justify-start">
+            <div
+              class="max-w-[80%] rounded-2xl px-4 py-3 text-sm bg-white text-slate-700 shadow-sm border border-gray-100 rounded-tl-none"
+            >
+              Hello! How can I help you with your corporate banking needs today?
+            </div>
+          </div>
+        </div>
+
+        <!-- Loader -->
+        <div id="chat-loader" class="hidden px-4 pb-4 bg-gray-50">
+          <div class="flex justify-start">
+            <div
+              class="bg-white text-slate-700 shadow-sm border border-gray-100 rounded-2xl rounded-tl-none px-4 py-3 flex items-center gap-2"
+            >
+              <i
+                data-lucide="loader-2"
+                class="w-4 h-4 animate-spin text-gold"
+              ></i>
+              <span class="text-xs text-gray-400">Typing...</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Input -->
+        <div class="p-4 bg-white border-t border-gray-100">
+          <div
+            class="flex items-center gap-2 bg-gray-50 rounded-full px-4 py-2 border border-gray-200 focus-within:border-gold focus-within:ring-1 focus-within:ring-gold transition-all"
+          >
+            <input
+              type="text"
+              id="chat-input"
+              placeholder="Type your message..."
+              class="flex-1 bg-transparent outline-none text-sm text-slate-900"
+            />
+            <button
+              id="send-msg-btn"
+              class="p-2 bg-gold text-white rounded-full hover:bg-gold-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+              disabled
+            >
+              <i data-lucide="send" class="w-4 h-4"></i>
+            </button>
+          </div>
+          <div class="text-center mt-2">
+            <p class="text-[10px] text-gray-400">Powered by Gemini AI</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Toggle Button -->
+      <button
+        id="toggle-chat-btn"
+        class="bg-gold hover:bg-gold-700 text-white p-4 rounded-full shadow-lg hover:shadow-xl transition-all transform hover:scale-110 flex items-center justify-center group"
+      >
+        <i
+          data-lucide="message-circle"
+          class="w-6 h-6 group-hover:animate-pulse"
+        ></i>
+      </button>
+    </div>
+
+    <!-- Modals Container -->
+    <div id="modals-container"></div>
+
+    <!-- JavaScript -->
+    <script
+      data-cfasync="false"
+      src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"
+    ></script>
+    <script type="module">
+      import { GoogleGenAI } from "@google/genai";
+
+      // Initialize Lucide Icons
+      lucide.createIcons();
+
+      // Mobile Menu
+      const mobileMenuBtn = document.getElementById("mobile-menu-btn");
+      const mobileMenu = document.getElementById("mobile-menu");
+      const menuIcon = document.getElementById("menu-icon");
+      const closeIcon = document.getElementById("close-icon");
+
+      mobileMenuBtn.addEventListener("click", () => {
+        const isHidden = mobileMenu.classList.contains("hidden");
+        if (isHidden) {
+          mobileMenu.classList.remove("hidden");
+          mobileMenu.classList.add("flex");
+          menuIcon.classList.add("hidden");
+          closeIcon.classList.remove("hidden");
+        } else {
+          mobileMenu.classList.add("hidden");
+          mobileMenu.classList.remove("flex");
+          menuIcon.classList.remove("hidden");
+          closeIcon.classList.add("hidden");
+        }
+        lucide.createIcons();
+      });
+
+      // Chat Widget
+      const chatContainer = document.getElementById("chat-container");
+      const toggleChatBtn = document.getElementById("toggle-chat-btn");
+      const closeChatBtn = document.getElementById("close-chat-btn");
+      const chatInput = document.getElementById("chat-input");
+      const sendMsgBtn = document.getElementById("send-msg-btn");
+      const chatMessages = document.getElementById("chat-messages");
+      const chatLoader = document.getElementById("chat-loader");
+
+      let isChatOpen = false;
+      let messages = [
+        {
+          role: "model",
+          content:
+            "Hello! How can I help you with your corporate banking needs today?",
+        },
+      ];
+      let chatSession = null;
+
+      const SYSTEM_INSTRUCTION = `You are the Virtual Assistant for First Ally Microfinance Bank. 
+Your tone is professional, helpful, and concise. 
+You can help with:
+- Opening corporate accounts
+- Online banking access
+- General banking FAQs
+- Locations and contact info
+
+Information to know:
+- Locations: Jibowu, Lagos Island, Surulere, Bariga.
+- Contact: info@first-allymfb.com, +234 807 580 9060.
+- Services: Corporate Banking, Internet Banking, Loans, Savings.
+
+If you don't know the answer, politely ask the user to contact customer support.`;
+
+      function toggleChat() {
+        isChatOpen = !isChatOpen;
+        if (isChatOpen) {
+          chatContainer.classList.remove("hidden");
+          chatContainer.classList.add("flex", "animate-fade-in-up");
+        } else {
+          chatContainer.classList.add("hidden");
+          chatContainer.classList.remove("flex");
+        }
+      }
+
+      toggleChatBtn.addEventListener("click", toggleChat);
+      closeChatBtn.addEventListener("click", toggleChat);
+
+      chatInput.addEventListener("input", (e) => {
+        if (e.target.value.trim()) {
+          sendMsgBtn.removeAttribute("disabled");
+        } else {
+          sendMsgBtn.setAttribute("disabled", "true");
+        }
+      });
+
+      chatInput.addEventListener("keypress", (e) => {
+        if (e.key === "Enter" && chatInput.value.trim()) {
+          handleSendMessage();
+        }
+      });
+
+      sendMsgBtn.addEventListener("click", handleSendMessage);
+
+      function scrollToBottom() {
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+      }
+
+      function appendMessage(role, content) {
+        const div = document.createElement("div");
+        div.className =
+          role === "user" ? "flex justify-end" : "flex justify-start";
+        div.innerHTML = `
+          <div class="max-w-[80%] rounded-2xl px-4 py-3 text-sm ${
+            role === "user"
+              ? "bg-gold text-white rounded-tr-none"
+              : "bg-white text-slate-700 shadow-sm border border-gray-100 rounded-tl-none"
+          }">
+            ${content}
+          </div>
+        `;
+        chatMessages.appendChild(div);
+        scrollToBottom();
+      }
+
+      async function handleSendMessage() {
+        const text = chatInput.value.trim();
+        if (!text) return;
+
+        chatInput.value = "";
+        sendMsgBtn.setAttribute("disabled", "true");
+        appendMessage("user", text);
+        messages.push({ role: "user", content: text });
+
+        chatLoader.classList.remove("hidden");
+        scrollToBottom();
+        lucide.createIcons();
+
+        try {
+          const apiKey = "YOUR_API_KEY_HERE"; // Replace with actual API key
+          if (!apiKey || apiKey === "YOUR_API_KEY_HERE") {
+            throw new Error("API Key not configured");
+          }
+
+          if (!chatSession) {
+            const ai = new GoogleGenAI({ apiKey });
+            chatSession = ai.chats.create({
+              model: "gemini-2.0-flash-exp",
+              config: { systemInstruction: SYSTEM_INSTRUCTION },
+              history: messages.slice(0, -1).map((m) => ({
+                role: m.role,
+                parts: [{ text: m.content }],
+              })),
+            });
+          }
+
+          const result = await chatSession.sendMessage({ message: text });
+          const responseText = result.text || "I didn't understand that.";
+
+          chatLoader.classList.add("hidden");
+          appendMessage("model", responseText);
+          messages.push({ role: "model", content: responseText });
+        } catch (error) {
+          console.error("Chat error:", error);
+          chatLoader.classList.add("hidden");
+          const errorMsg =
+            "I'm sorry, I can't connect right now. Please try again later.";
+          appendMessage("model", errorMsg);
+          messages.push({ role: "model", content: errorMsg });
+        }
+      }
+
+      // Modal System
+      window.openModal = function (modalType) {
+        const modalsContainer = document.getElementById("modals-container");
+        document.body.classList.add("modal-open");
+
+        if (modalType === "openAccount") {
+          modalsContainer.innerHTML = createOpenAccountModal();
+        } else if (modalType === "requestAccess") {
+          modalsContainer.innerHTML = createRequestAccessModal();
+        }
+
+        lucide.createIcons();
+        setupModalListeners();
+      };
+
+      window.closeModal = function () {
+        const modalsContainer = document.getElementById("modals-container");
+        modalsContainer.innerHTML = "";
+        document.body.classList.remove("modal-open");
+      };
+
+      function setupModalListeners() {
+        // Close modal on background click
+        const modalBg = document.querySelector(".modal-background");
+        if (modalBg) {
+          modalBg.addEventListener("click", closeModal);
+        }
+
+        // Close modal on X button click
+        const closeBtn = document.querySelector(".modal-close-btn");
+        if (closeBtn) {
+          closeBtn.addEventListener("click", closeModal);
+        }
+
+        // Tab switching for Open Account Modal
+        const downloadTab = document.getElementById("download-tab");
+        const onlineTab = document.getElementById("online-tab");
+        const downloadContent = document.getElementById("download-content");
+        const onlineContent = document.getElementById("online-content");
+
+        if (downloadTab && onlineTab) {
+          downloadTab.addEventListener("click", () => {
+            downloadTab.classList.add("text-slate-900");
+            downloadTab.classList.remove("text-gray-400");
+            onlineTab.classList.add("text-gray-400");
+            onlineTab.classList.remove("text-slate-900");
+            downloadContent.classList.remove("hidden");
+            onlineContent.classList.add("hidden");
+
+            const downloadIndicator =
+              downloadTab.querySelector(".tab-indicator");
+            const onlineIndicator = onlineTab.querySelector(".tab-indicator");
+            downloadIndicator.classList.remove("hidden");
+            onlineIndicator.classList.add("hidden");
+          });
+
+          onlineTab.addEventListener("click", () => {
+            onlineTab.classList.add("text-slate-900");
+            onlineTab.classList.remove("text-gray-400");
+            downloadTab.classList.add("text-gray-400");
+            downloadTab.classList.remove("text-slate-900");
+            onlineContent.classList.remove("hidden");
+            downloadContent.classList.add("hidden");
+
+            const downloadIndicator =
+              downloadTab.querySelector(".tab-indicator");
+            const onlineIndicator = onlineTab.querySelector(".tab-indicator");
+            onlineIndicator.classList.remove("hidden");
+            downloadIndicator.classList.add("hidden");
+          });
+        }
+
+        // File upload functionality
+        const fileInputs = document.querySelectorAll(".file-upload-input");
+        fileInputs.forEach((input) => {
+          input.addEventListener("change", handleFileUpload);
+        });
+
+        const uploadAreas = document.querySelectorAll(".file-upload-area");
+        uploadAreas.forEach((area) => {
+          area.addEventListener("click", () => {
+            const input = area.querySelector(".file-upload-input");
+            if (input) input.click();
+          });
+        });
+
+        lucide.createIcons();
+      }
+
+      function handleFileUpload(event) {
+        const file = event.target.files[0];
+        if (!file) return;
+
+        const uploadArea = event.target.closest(".file-upload-container");
+        const fileName = file.name;
+        const fileSize = (file.size / 1024).toFixed(2);
+
+        const previewHTML = `
+          <div class="bg-white border border-gray-100 rounded-xl p-4 shadow-sm mt-4">
+            <div class="flex items-center justify-between mb-2">
+              <div class="flex items-center gap-3 overflow-hidden">
+                <div class="bg-red-100 p-2 rounded text-red-500">
+                  <i data-lucide="file-text" class="w-5 h-5"></i>
+                </div>
+                <span class="text-sm font-medium text-slate-700 truncate">${fileName}</span>
+              </div>
+              <button onclick="removeFile(this)" class="text-gray-400 hover:text-red-500 transition-colors">
+                <i data-lucide="trash-2" class="w-4 h-4"></i>
+              </button>
+            </div>
+            <div class="flex items-center gap-3">
+              <div class="flex-1 h-1.5 bg-gray-100 rounded-full overflow-hidden">
+                <div class="h-full bg-gold transition-all duration-300 file-progress" style="width: 0%"></div>
+              </div>
+              <span class="text-xs font-medium text-gray-500 progress-text">0%</span>
+            </div>
+          </div>
+        `;
+
+        const container = uploadArea.querySelector(".file-preview-container");
+        if (container) {
+          container.innerHTML = previewHTML;
+          lucide.createIcons();
+
+          // Simulate upload progress
+          let progress = 0;
+          const interval = setInterval(() => {
+            progress += 10;
+            const progressBar = container.querySelector(".file-progress");
+            const progressText = container.querySelector(".progress-text");
+            if (progressBar && progressText) {
+              progressBar.style.width = progress + "%";
+              progressText.textContent = progress + "%";
+            }
+            if (progress >= 100) {
+              clearInterval(interval);
+            }
+          }, 200);
+        }
+      }
+
+      window.removeFile = function (button) {
+        const preview = button.closest(".bg-white");
+        if (preview) {
+          preview.remove();
+        }
+      };
+
+      function createOpenAccountModal() {
+        return `
+          <div class="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6">
+            <div class="absolute inset-0 bg-slate-900/60 backdrop-blur-sm transition-opacity modal-background"></div>
+            <div class="relative w-full max-w-5xl bg-white rounded-3xl shadow-2xl overflow-hidden flex flex-col max-h-[90vh] animate-zoom-in">
+              <div class="p-6 sm:p-8 overflow-y-auto custom-scrollbar">
+                <div class="flex justify-between items-start mb-6">
+                  <h2 class="text-xl sm:text-2xl font-bold text-slate-900">Open a Corporate Account</h2>
+                  <button class="modal-close-btn p-2 hover:bg-gray-100 rounded-full transition-colors absolute top-6 right-6">
+                    <i data-lucide="x" class="w-6 h-6 text-slate-400 hover:text-slate-600"></i>
+                  </button>
+                </div>
+
+                <!-- Tabs -->
+                <div class="flex border-b border-gray-200 mb-8">
+                  <button id="download-tab" class="pb-4 pr-6 text-sm font-semibold transition-colors relative text-slate-900">
+                    Download Account Opening Form
+                    <span class="tab-indicator absolute bottom-0 left-0 w-full h-0.5 bg-slate-900 rounded-t-full"></span>
+                  </button>
+                  <button id="online-tab" class="pb-4 px-6 text-sm font-semibold transition-colors relative text-gray-400 hover:text-gray-600">
+                    Start Onboarding Online
+                    <span class="tab-indicator hidden absolute bottom-0 left-0 w-full h-0.5 bg-slate-900 rounded-t-full"></span>
+                  </button>
+                </div>
+
+                <!-- Download Tab Content -->
+                <div id="download-content">
+                  <div class="space-y-4 gap-8">
+                    <!-- Steps -->
+                    <div class="md:col-span-4 bg-gray-50 p-6 rounded-2xl h-fit ">
+                      <h3 class="font-bold text-lg mb-6 text-slate-800">Quick Steps to Open Your Corporate Account</h3>
+                      <div class="grid grid-cols-3 my-4 gap-4">
+                        
+                        <div class="relative pl-6 border-l-2 border-gray-200 pb-2">
+                          <span class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-gray-300 border-4 border-white"></span>
+                          <h4 class="font-bold text-sm text-slate-900 mb-1">1. Download the Form Pack</h4>
+                          <p class="text-xs text-gray-500 leading-relaxed">Everything you need to get started is inside.</p>
+                        </div>
+                        <div class="relative pl-6 border-l-2 border-gray-200 pb-2">
+                          <span class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-gray-300 border-4 border-white"></span>
+                          <h4 class="font-bold text-sm text-slate-900 mb-1">2. Complete the Form + Attach Documents</h4>
+                          <p class="text-xs text-gray-500 leading-relaxed">Fill the form, sign where required and attach the needed documents.</p>
+                        </div>
+                        <div class="relative pl-6 border-l-2 border-gray-200">
+                          <span class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-gray-300 border-4 border-white"></span>
+                          <h4 class="font-bold text-sm text-slate-900 mb-1">3. Submit to the Bank</h4>
+                          <p class="text-xs text-gray-500 leading-relaxed">Upload your completed form here or send it to the provided Email.</p>
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- Actions -->
+                    <div class="md:col-span-8 space-y-6">
+                      <div class="flex flex-col sm:flex-row gap-4">
+                        <a href="/assets/docs/FAMFB_Account_Opening_Form.pdf" download class="text-decoration-none flex-1">
+                          
+                        <div class="flex-1 border border-gray-200 rounded-xl p-4 flex items-center justify-between hover:border-gold transition-colors group cursor-pointer">
+                          <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 rounded bg-red-50 flex items-center justify-center text-red-500">
+                              <span class="font-bold text-xs">PDF</span>
+                            </div>
+                            <span class="text-sm font-semibold text-slate-700">Account Opening Form.pdf</span>
+                          </div>
+                          <i data-lucide="download" class="w-[18px] h-[18px] text-gray-400 group-hover:text-gold"></i>
+                        </div>
+                        </a>
+
+                        <div class="flex-1 bg-dark-900 text-white rounded-xl p-4 flex flex-col justify-between relative overflow-hidden">
+                          <p class="text-[10px] text-gray-400 mb-1">Prefer Email? Send your completed form to the email below.</p>
+                          <div class="bg-gold text-slate-900 font-bold text-xs px-3 py-1.5 rounded flex items-center justify-between mt-1">
+                            <span>operations@first-allymfb.com</span>
+                            <i data-lucide="link" class="w-3 h-3"></i>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="space-y-2 file-upload-container hidden">
+                        <h4 class="text-sm font-bold text-slate-900">Upload Completed Form</h4>
+                        <div class="file-upload-area border-2 border-dashed border-gray-200 rounded-2xl p-8 flex flex-col items-center justify-center cursor-pointer hover:border-gold hover:bg-gold-50/10 transition-colors bg-gray-50 h-[200px]">
+                          <div class="bg-gold w-12 h-12 rounded-lg flex items-center justify-center mb-4 text-white">
+                            <i data-lucide="folder" class="w-6 h-6"></i>
+                          </div>
+                          <h4 class="font-bold text-slate-800 mb-1">Upload File</h4>
+                          <p class="text-xs text-gray-500 text-center max-w-xs">Supported formats: JPG, PNG, PDF. Maximum file size: 10MB.</p>
+                          <button class="mt-4 px-4 py-2 bg-white border border-gray-200 rounded-md text-xs font-semibold text-gray-600 shadow-sm">Choose File</button>
+                          <input type="file" class="file-upload-input hidden" accept=".pdf,.jpg,.jpeg,.png" />
+                        </div>
+                        <div class="file-preview-container"></div>
+                      </div>
+
+                      <div class="flex justify-end pt-4 hidden">
+                        <button onclick="closeModal()" class="bg-gold hover:bg-gold-700 text-white px-8 py-3 rounded-lg font-bold text-sm transition-colors shadow-lg">
+                          Submit
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Online Tab Content -->
+                <div id="online-content" class="hidden animate-fade-in">
+                  <p class="text-sm text-gray-500 mb-6">For a seamless onboarding experience, ensure you have the following documents ready for upload.</p>
+                  
+                  <div class="space-y-4 max-h-[400px] overflow-y-auto pr-2 custom-scrollbar">
+                    ${[
+                      {
+                        title: "Board Resolution",
+                        desc: "Official Board Resolution authorizing account opening",
+                        action: "none",
+                      },
+                      {
+                        title: "Mandatory Account Information Form",
+                        desc: "This form captures mandatory additional business and compliance information required to complete your corporate account onboarding. Please download and fill it accurately.",
+                        action: "download",
+                        url: "/assets/docs/FAMFB_Corporate_Online_Banking_Form.pdf",
+                      },
+                      {
+                        title: "Corporate Reference Forms",
+                        desc: "Two reference forms completed by corporate organizations with active current accounts.",
+                        action: "download",
+                        url: "/assets/docs/FAMFB_Reference_Forms.pdf",
+                      },
+                      {
+                        title: "Passport Photographs",
+                        desc: "Two passport photographs of each signatory",
+                        action: "none",
+                      },
+                      {
+                        title: "Valid ID Cards",
+                        desc: "International Passport, Driver's License, Voter's Card",
+                        action: "none",
+                      },
+                      {
+                        title: "Certificate of Incorporation",
+                        desc: "Certified True Copy of Certificate of Incorporation & Memorandum & Articles of Association",
+                        action: "none",
+                      },
+                      {
+                        title: "Tax Identification Number (TIN)",
+                        desc: "Certified True Copy of Certificate of Incorporation & Memorandum & Articles of Association",
+                        action: "none",
+                      },
+                      {
+                        title: "Forms CO2 & CO7",
+                        desc: "Particulars of Directors (For Limited Liability Companies only)",
+                        action: "none",
+                      },
+                      {
+                        title: "NIN",
+                        desc: "National Identity Number of each signatory",
+                        action: "none",
+                      },
+                      {
+                        title: "Signature",
+                        desc: "Signature cards for all Signatories",
+                        action: "none",
+                      },
+                      {
+                        title: "Utility Bill",
+                        desc: "Electricity, Water, Waste (Not older than 3 months)",
+                        action: "none",
+                      },
+                    ]
+                      .map(
+                        (item) => `
+                      <div class="flex flex-col sm:flex-row sm:items-center justify-between p-4 border border-gray-100 rounded-xl hover:bg-gray-50 transition-colors">
+                        <div class="mb-2 sm:mb-0">
+                          <h4 class="text-sm font-bold text-slate-800">${
+                            item.title
+                          }</h4>
+                          <p class="text-xs text-gray-500 mt-0.5 max-w-md">${
+                            item.desc
+                          }</p>
+                        </div>
+                        ${
+                          item.action === "download"
+                            ? `
+                          <div class="flex gap-2">
+                            <button class="px-3 py-1.5 bg-gold text-white text-xs font-bold rounded hover:bg-gold-700 transition-colors hidden">Fill Online</button>
+                            <a href=${item?.url} class="text-decoration-none flex-1" target="_blank"><button class="px-3 py-1.5 bg-dark-900 text-white text-xs font-bold rounded hover:bg-slate-800 transition-colors">Download</button></a>
+                          </div>
+                        `
+                            : `<span class="text-[10px] text-gray-400 uppercase font-medium bg-gray-100 px-2 py-1 rounded">Required During Onboarding</span>`
+                        }
+                      </div>
+                    `
+                      )
+                      .join("")}
+                  </div>
+
+                  <div class="mt-6 bg-[#FEF6D7] border border-gold-400/30 rounded-lg p-4 flex flex-col sm:flex-row items-center justify-between gap-4">
+                    <div>
+                      <h5 class="text-xs font-bold text-gold-700 mb-1">Important Note</h5>
+                      <p class="text-[10px] text-slate-600">Please ensure all required documents are readily available before you begin. For items that include a download option, kindly download and complete them accurately, then keep them handy—you will be asked to upload them during the onboarding process..</p>
+                    </div>
+                    <a href="https://firstallymfb-corporate.lucidbanking.com/auth/onboarding/choose-account" target="_blank" rel="noopener noreferrer">
+                    <button class="whitespace-nowrap bg-gold hover:bg-gold-700 text-white px-6 py-2.5 rounded-lg font-bold text-sm transition-colors shadow-md">
+                      Proceed to Signup
+                    </button>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        `;
+      }
+
+      function createRequestAccessModal() {
+        return `
+          <div class="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6">
+            <div class="absolute inset-0 bg-slate-900/60 backdrop-blur-sm transition-opacity modal-background"></div>
+            <div class="relative w-full max-w-5xl bg-white rounded-3xl shadow-2xl overflow-hidden flex flex-col max-h-[90vh] animate-zoom-in">
+              <div class="p-6 sm:p-8 overflow-y-auto custom-scrollbar">
+                <div class="flex justify-between items-start mb-6">
+                  <h2 class="text-xl sm:text-2xl font-bold text-slate-900">Request Online Access for Your Corporate Account</h2>
+                  <button class="modal-close-btn p-2 hover:bg-gray-100 rounded-full transition-colors absolute top-6 right-6">
+                    <i data-lucide="x" class="w-6 h-6 text-slate-400 hover:text-slate-600"></i>
+                  </button>
+                </div>
+
+                <div class="space-y-8">
+                  <!-- Fill Online Option -->
+                  <div class="bg-gray-50 rounded-xl p-4 flex flex-col sm:flex-row items-center justify-between gap-4 border border-gray-200 hidden">
+                    <div>
+                      <h4 class="font-bold text-sm text-slate-900">Fill Request Form Online</h4>
+                      <p class="text-xs text-gray-500 mt-1">Submit your online request in minutes. A copy of the form will be emailed to you automatically.</p>
+                    </div>
+                    <button class="whitespace-nowrap px-6 py-2 bg-gold text-white font-bold text-xs rounded hover:bg-gold-700 transition-colors shadow-sm">
+                      Fill Online
+                    </button>
+                  </div>
+
+                  <!-- Download Section -->
+                  <div>
+                    <h4 class="font-bold text-sm text-slate-900 mb-2">Download & Submit Form</h4>
+                    <p class="text-xs text-gray-500 mb-4">Download the form, complete it in your framework, and upload it here or send it to the email provided.</p>
+                    
+                    <div class="flex flex-col sm:flex-row gap-4">
+                      <a href="/assets/docs/FAMFB_Corporate_Online_Banking_Form.pdf" download class="text-decoration-none flex-1">
+                      <div class="flex-1 border border-gray-200 rounded-xl p-4 flex items-center justify-between hover:border-gold transition-colors group cursor-pointer">
+                        <div class="flex items-center gap-3">
+                          <div class="w-10 h-10 rounded bg-red-50 flex items-center justify-center text-red-500">
+                            <span class="font-bold text-xs">PDF</span>
+                          </div>
+                          <span class="text-sm font-semibold text-slate-700">FAMFB - Coporate Online Banking Form.pdf</span>
+                        </div>
+                        <i data-lucide="download" class="w-[18px] h-[18px] text-gray-400 group-hover:text-gold"></i>
+                      </div>
+                      </a>
+
+                      <div class="flex-1 bg-dark-900 text-white rounded-xl p-4 flex flex-col justify-between relative overflow-hidden">
+                        <p class="text-[10px] text-gray-400 mb-1">Prefer Email? Send your completed form to the email below.</p>
+                        <div class="bg-gold text-slate-900 font-bold text-xs px-3 py-1.5 rounded flex items-center justify-between mt-1">
+                          <span>operations@first-allymfb.com</span>
+                          <i data-lucide="link" class="w-3 h-3"></i>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Upload Section -->
+                  <div class="file-upload-container hidden">
+                    <h4 class="font-bold text-sm text-slate-900 mb-2">Upload Form</h4>
+                    <div class="file-upload-area border-2 border-dashed border-gray-200 rounded-2xl p-8 flex flex-col items-center justify-center cursor-pointer hover:border-gold hover:bg-gold-50/10 transition-colors bg-gray-50 h-[200px]">
+                      <div class="bg-gold w-12 h-12 rounded-lg flex items-center justify-center mb-4 text-white">
+                        <i data-lucide="folder" class="w-6 h-6"></i>
+                      </div>
+                      <h4 class="font-bold text-slate-800 mb-1">Upload File</h4>
+                      <p class="text-xs text-gray-500 text-center max-w-xs">Supported formats: JPG, PNG, PDF. Maximum file size: 10MB.</p>
+                      <button class="mt-4 px-4 py-2 bg-white border border-gray-200 rounded-md text-xs font-semibold text-gray-600 shadow-sm">Choose File</button>
+                      <input type="file" class="file-upload-input hidden" accept=".pdf,.jpg,.jpeg,.png" />
+                    </div>
+                    <div class="file-preview-container"></div>
+                  </div>
+
+                  <!-- Footer Actions -->
+                  <div class="flex justify-end pt-4 border-t border-gray-100 hidden">
+                    <button onclick="closeModal()" class="bg-gold hover:bg-gold-700 text-white px-8 py-3 rounded-lg font-bold text-sm transition-colors shadow-lg">
+                      Submit
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        `;
+      }
+
+      // Initialize Lucide icons
+      lucide.createIcons();
+    </script>
+  </body>
+</html>
