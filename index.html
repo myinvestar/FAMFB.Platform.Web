@@ -1380,54 +1380,49 @@ If you don't know the answer, politely ask the user to contact customer support.
 
                 <!-- Download Tab Content -->
                 <div id="download-content">
-                  <div class="space-y-4 gap-8">
+                  <div class="grid md:grid-cols-12 gap-8">
                     <!-- Steps -->
-                    <div class="md:col-span-4 bg-gray-50 p-6 rounded-2xl h-fit ">
+                    <div class="md:col-span-12 bg-gray-50 p-6 rounded-2xl h-fit">
                       <h3 class="font-bold text-lg mb-6 text-slate-800">Quick Steps to Open Your Corporate Account</h3>
-                     <div class="grid grid-cols-1 md:grid-cols-3 my-4 gap-4">
-  
-  <div class="relative pl-6 border-l-2 border-gray-200 pb-2">
-    <span class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-gray-300 border-4 border-white"></span>
-    <h4 class="font-bold text-sm text-slate-900 mb-1">1. Download the Form Pack</h4>
-    <p class="text-xs text-gray-500 leading-relaxed">Everything you need to get started is inside.</p>
-  </div>
-
-  <div class="relative pl-6 border-l-2 border-gray-200 pb-2">
-    <span class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-gray-300 border-4 border-white"></span>
-    <h4 class="font-bold text-sm text-slate-900 mb-1">2. Complete the Form + Attach Documents</h4>
-    <p class="text-xs text-gray-500 leading-relaxed">Fill the form, sign where required and attach the needed documents.</p>
-  </div>
-
-  <div class="relative pl-6 border-l-2 border-gray-200 pb-2">
-    <span class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-gray-300 border-4 border-white"></span>
-    <h4 class="font-bold text-sm text-slate-900 mb-1">3. Submit to the Bank</h4>
-    <p class="text-xs text-gray-500 leading-relaxed">Send your completed form to the email Provided</p>
-  </div>
-
-</div>
+                      <div class="flex ">
+                        <div class="relative pl-6 border-l-2 border-gray-200 pb-2">
+                          <span class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-gold border-4 border-white shadow-sm"></span>
+                          <h4 class="font-bold text-sm text-slate-900 mb-1">1. Download the Form Pack</h4>
+                          <p class="text-xs text-gray-500 leading-relaxed">Everything you need to get started is inside.</p>
+                        </div>
+                        <div class="relative pl-6 border-l-2 border-gray-200 pb-2">
+                          <span class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-gray-300 border-4 border-white"></span>
+                          <h4 class="font-bold text-sm text-slate-900 mb-1">2. Complete the Form + Attach Documents</h4>
+                          <p class="text-xs text-gray-500 leading-relaxed">Fill the form, sign where required and attach the needed documents.</p>
+                        </div>
+                        <div class="relative pl-6 border-l-2 border-gray-200">
+                          <span class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-gray-300 border-4 border-white"></span>
+                          <h4 class="font-bold text-sm text-slate-900 mb-1">3. Submit to the Bank</h4>
+                          <p class="text-xs text-gray-500 leading-relaxed">Upload your completed form here or send it to the provided Email.</p>
+                        </div>
+                      </div>
                     </div>
 
                     <!-- Actions -->
                     <div class="md:col-span-8 space-y-6">
                       <div class="flex flex-col sm:flex-row gap-4">
                         <a href="/assets/docs/FAMFB_Account_Opening_Form.pdf" download class="text-decoration-none flex-1">
-                          
-                        <div class="flex-1 border border-gray-200 rounded-xl p-4 flex items-center justify-between hover:border-gold transition-colors group cursor-pointer">
-                          <div class="flex items-center gap-3">
-                            <div class="w-10 h-10 rounded bg-red-50 flex items-center justify-center text-red-500">
-                              <span class="font-bold text-xs">PDF</span>
+                          <div class="flex-1 border border-gray-200 rounded-xl p-4 flex items-center justify-between hover:border-gold transition-colors group cursor-pointer h-full">
+                            <div class="flex items-center gap-3">
+                              <div class="w-10 h-10 rounded bg-red-50 flex items-center justify-center text-red-500">
+                                <span class="font-bold text-xs">PDF</span>
+                              </div>
+                              <span class="text-sm font-semibold text-slate-700">Account Opening Form.pdf</span>
                             </div>
-                            <span class="text-sm font-semibold text-slate-700">FAMFB - Account Opening Form.pdf</span>
+                            <i data-lucide="download" class="w-[18px] h-[18px] text-gray-400 group-hover:text-gold"></i>
                           </div>
-                          <i data-lucide="download" class="w-[18px] h-[18px] text-gray-400 group-hover:text-gold"></i>
-                        </div>
                         </a>
 
                         <div class="flex-1 bg-dark-900 text-white rounded-xl p-4 flex flex-col justify-between relative overflow-hidden">
-                          <p class="text-[10px] text-gray-400 mb-1">Send your completed form to the email below</p>
-                          <div  onclick="navigator.clipboard.writeText('operations@first-allymfb.com').then(() => alert('Email copied successfully!'))"  class="bg-gold text-slate-900 font-bold text-xs px-3 py-1.5 rounded flex items-center justify-between mt-1 cursor-pointer hover:bg-gold-700 transition-colors">
+                          <p class="text-[10px] text-gray-400 mb-1">Prefer Email? Send your completed form to the email below.</p>
+                          <div class="bg-gold text-slate-900 font-bold text-xs px-3 py-1.5 rounded flex items-center justify-between mt-1 cursor-pointer hover:bg-gold-400 transition-colors" onclick="navigator.clipboard.writeText('operations@first-allymfb.com').then(() => alert('Email copied successfully!'))">
                             <span>operations@first-allymfb.com</span>
-                            <i data-lucide="copy" class="w-3 h-3"></i
+                            <i data-lucide="copy" class="w-3 h-3"></i>
                           </div>
                         </div>
                       </div>
@@ -1463,14 +1458,14 @@ If you don't know the answer, politely ask the user to contact customer support.
                     ${[
                       {
                         title: "Board Resolution",
-                        desc: "A Board Resolution on your company letterhead authorizing FAMFB to open the account, listing approved signatories, and signed by the Chairman/Director and Secretary.",
+                        desc: "Official Board Resolution authorizing account opening",
                         action: "none",
                       },
                       {
                         title: "Mandatory Account Information Form",
-                        desc: "This form captures mandatory additional business and compliance information required to complete your corporate account onboarding. Please download and fill it accurately.",
+                        desc: "This form captures mandatory additional business and compliance information.",
                         action: "download",
-                        url: "/assets/docs/FAMFB_Mandatory_Account_Information_form.pdf",
+                        url: "/assets/docs/FAMFB_Corporate_Online_Banking_Form.pdf",
                       },
                       {
                         title: "Corporate Reference Forms",
@@ -1532,12 +1527,11 @@ If you don't know the answer, politely ask the user to contact customer support.
                         </div>
                         ${
                           item.action === "download"
-                            ? `
-                          <div class="flex gap-2">
-                            <button class="px-3 py-1.5 bg-gold text-white text-xs font-bold rounded hover:bg-gold-700 transition-colors hidden">Fill Online</button>
-                            <a href=${item?.url} class="text-decoration-none flex-1" target="_blank"><button class="px-3 py-1.5 bg-dark-900 text-white text-xs font-bold rounded hover:bg-slate-800 transition-colors">Download</button></a>
-                          </div>
-                        `
+                            ? `<div class="flex gap-2">
+                                <a href="${item.url}" class="text-decoration-none flex-1" target="_blank">
+                                  <button class="px-3 py-1.5 bg-dark-900 text-white text-xs font-bold rounded hover:bg-slate-800 transition-colors">Download</button>
+                                </a>
+                               </div>`
                             : `<span class="text-[10px] text-gray-400 uppercase font-medium bg-gray-100 px-2 py-1 rounded">Required During Onboarding</span>`
                         }
                       </div>
@@ -1549,13 +1543,11 @@ If you don't know the answer, politely ask the user to contact customer support.
                   <div class="mt-6 bg-[#FEF6D7] border border-gold-400/30 rounded-lg p-4 flex flex-col sm:flex-row items-center justify-between gap-4">
                     <div>
                       <h5 class="text-xs font-bold text-gold-700 mb-1">Important Note</h5>
-                      <p class="text-[10px] text-slate-600">Please ensure all required documents are readily available before you begin. For items that include a download option, kindly download and complete them accurately, then keep them handy. You will be asked to upload them during the onboarding process..</p>
+                      <p class="text-[10px] text-slate-600">Forms filled online will be delivered to your email. Please download and keep them handy, you'll upload them during onboarding.</p>
                     </div>
-                    <a href="https://firstallymfb-corporate.lucidbanking.com/auth/onboarding/choose-account" target="_blank" rel="noopener noreferrer">
                     <button class="whitespace-nowrap bg-gold hover:bg-gold-700 text-white px-6 py-2.5 rounded-lg font-bold text-sm transition-colors shadow-md">
                       Proceed to Signup
                     </button>
-                    </a>
                   </div>
                 </div>
               </div>
@@ -1563,7 +1555,6 @@ If you don't know the answer, politely ask the user to contact customer support.
           </div>
         `;
       }
-
       function createRequestAccessModal() {
         return `
           <div class="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6">
