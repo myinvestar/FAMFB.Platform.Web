@@ -125,7 +125,7 @@
       class="sticky top-0 z-40 bg-white/95 backdrop-blur-sm border-b border-gray-100 py-4"
     >
       <div
-        class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between"
+        class="mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between"
       >
         <!-- Logo -->
         <div class="flex items-center gap-2">
@@ -139,29 +139,147 @@
         </div>
 
         <!-- Desktop Links -->
-        <div class="hidden md:flex items-center gap-8">
-          <a href="#" class="text-gold font-semibold text-sm">Home</a>
+        <div class="hidden md:flex items-center gap-6">
           <a
-            href="https://first-allymfb.com/faqs/"
+            href="https://first-allymfb.com/"
+            class="text-gold font-semibold text-sm"
+            >Home</a
+          >
+
+          <!-- Our Services Dropdown -->
+          <div class="relative group">
+            <button
+              class="text-slate-600 hover:text-gold font-medium text-sm transition-colors flex items-center gap-1"
+            >
+              Our Services
+              <i data-lucide="chevron-down" class="w-4 h-4"></i>
+            </button>
+            <div
+              class="absolute top-full left-0 mt-2 w-48 bg-white border border-gray-100 rounded-lg shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200"
+            >
+              <a
+                href="https://first-allymfb.com/savings/"
+                class="block px-4 py-3 text-sm text-slate-600 hover:bg-gray-50 hover:text-gold transition-colors"
+                >Savings</a
+              >
+              <a
+                href="https://first-allymfb.com/investments/"
+                class="block px-4 py-3 text-sm text-slate-600 hover:bg-gray-50 hover:text-gold transition-colors"
+                >Investments</a
+              >
+              <a
+                href="https://first-allymfb.com/loans/"
+                class="block px-4 py-3 text-sm text-slate-600 hover:bg-gray-50 hover:text-gold transition-colors"
+                >Loans</a
+              >
+            </div>
+          </div>
+
+          <!-- E-Channels Dropdown -->
+          <div class="relative group">
+            <button
+              class="text-slate-600 hover:text-gold font-medium text-sm transition-colors flex items-center gap-1"
+            >
+              E-Channels
+              <i data-lucide="chevron-down" class="w-4 h-4"></i>
+            </button>
+            <div
+              class="absolute top-full left-0 mt-2 w-56 bg-white border border-gray-100 rounded-lg shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200"
+            >
+              <a
+                href="https://first-allymfb.com/e-channels/#ussd-banking"
+                class="block px-4 py-3 text-sm text-slate-600 hover:bg-gray-50 hover:text-gold transition-colors"
+                >USSD Banking</a
+              >
+              <a
+                href="https://first-allymfb.com/e-channels/#agency-banking"
+                class="block px-4 py-3 text-sm text-slate-600 hover:bg-gray-50 hover:text-gold transition-colors"
+                >Agency Banking</a
+              >
+              <a
+                href="https://first-allymfb.com/e-channels/#pos-banking"
+                class="block px-4 py-3 text-sm text-slate-600 hover:bg-gray-50 hover:text-gold transition-colors"
+                >POS Banking</a
+              >
+              <a
+                href="https://first-allymfb.com/e-channels/#debit-card"
+                class="block px-4 py-3 text-sm text-slate-600 hover:bg-gray-50 hover:text-gold transition-colors"
+                >Debit Card</a
+              >
+              <a
+                href="https://first-allymfb.com/e-channels/#internet-and-mobile-banking"
+                class="block px-4 py-3 text-sm text-slate-600 hover:bg-gray-50 hover:text-gold transition-colors"
+                >Internet and Mobile Banking</a
+              >
+            </div>
+          </div>
+
+          <!-- About Us Dropdown -->
+          <div class="relative group">
+            <button
+              class="text-slate-600 hover:text-gold font-medium text-sm transition-colors flex items-center gap-1"
+            >
+              About Us
+              <i data-lucide="chevron-down" class="w-4 h-4"></i>
+            </button>
+            <div
+              class="absolute top-full left-0 mt-2 w-48 bg-white border border-gray-100 rounded-lg shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200"
+            >
+              <a
+                href="https://first-allymfb.com/our-board/"
+                class="block px-4 py-3 text-sm text-slate-600 hover:bg-gray-50 hover:text-gold transition-colors"
+                >Our Board</a
+              >
+              <a
+                href="https://first-allymfb.com/our-management/"
+                class="block px-4 py-3 text-sm text-slate-600 hover:bg-gray-50 hover:text-gold transition-colors"
+                >Our Management</a
+              >
+            </div>
+          </div>
+
+          <a
+            href="https://first-allymfb.com/careers/"
             class="text-slate-600 hover:text-gold font-medium text-sm transition-colors"
-            >FAQ</a
+            >Careers</a
           >
           <a
-            href="mailto:info@first-allymfb.com"
+            href="https://first-allymfb.com/contact-us/"
             class="text-slate-600 hover:text-gold font-medium text-sm transition-colors"
             >Contact Us</a
           >
+
           <a
-            href="https://firstallymfb-corporate.lucidbanking.com/login"
-            target="_blank"
-            class="decoration:none"
+            href="#"
+            class="bg-gold hover:bg-gold-700 text-white px-6 py-2.5 rounded font-semibold transition-colors text-sm shadow-md"
+            >Open an Account</a
           >
+
+          <!-- Internet Banking Login Dropdown -->
+          <div class="relative group">
             <button
-              class="bg-gold hover:bg-gold-700 text-white px-6 py-2.5 rounded font-semibold transition-colors text-sm shadow-md"
+              class="bg-dark-900 hover:bg-slate-800 text-white px-6 py-2.5 rounded font-semibold transition-colors text-sm shadow-md flex items-center gap-1"
             >
-              Login
+              Internet Banking Login
+              <i data-lucide="chevron-down" class="w-4 h-4"></i>
             </button>
-          </a>
+            <div
+              class="absolute top-full right-0 mt-2 w-40 bg-white border border-gray-100 rounded-lg shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200"
+            >
+              <a
+                href="https://firstallymfb.lucidbanking.com/login"
+                target="_blank"
+                class="block px-4 py-3 text-sm text-slate-600 hover:bg-gray-50 hover:text-gold transition-colors"
+                >Personal</a
+              >
+              <a
+                href="https://firstallymfb-corporate.lucidbanking.com/login"
+                target="_blank"
+                class="block px-4 py-3 text-sm text-slate-600 hover:bg-gray-50 hover:text-gold transition-colors"
+                >Corporate</a
+              >
+            </div>
+          </div>
         </div>
 
         <!-- Mobile Menu Button -->
@@ -174,22 +292,166 @@
       <!-- Mobile Menu -->
       <div
         id="mobile-menu"
-        class="hidden md:hidden absolute top-full left-0 w-full bg-white border-b border-gray-100 p-4 flex-col gap-4 shadow-lg animate-fade-in-up"
+        class="hidden md:hidden absolute top-full left-0 w-full bg-[#F5F5DC] border-b border-gray-100 shadow-lg max-h-[80vh] overflow-y-auto z-50"
       >
-        <a href="#" class="text-gold font-semibold">Home</a>
-        <a href="https://first-allymfb.com/faqs/" class="text-slate-600">FAQ</a>
-        <a href="#" class="text-slate-600">Contact Us</a>
-        <a
-          href="https://firstallymfb-corporate.lucidbanking.com/login"
-          target="_blank"
-          class="decoration:none"
-        >
-          <button
-            class="bg-gold text-white px-6 py-2 rounded font-semibold w-full"
+        <div class="flex flex-col w-full">
+          <a
+            href="https://first-allymfb.com/"
+            class="w-full px-6 py-4 text-slate-800 font-medium border-b border-gray-200 hover:bg-gold hover:text-white transition-colors"
+            >Home</a
           >
-            Login
-          </button>
-        </a>
+
+          <!-- Our Services Accordion -->
+          <div class="w-full border-b border-gray-200">
+            <button
+              class="mobile-accordion-btn w-full flex items-center justify-between px-6 py-4 text-slate-800 font-medium text-left hover:bg-gold hover:text-white transition-colors"
+            >
+              Our Services
+              <i
+                data-lucide="chevron-down"
+                class="w-5 h-5 transition-transform accordion-icon"
+              ></i>
+            </button>
+            <div
+              class="mobile-accordion-content hidden flex-col w-full bg-white"
+            >
+              <a
+                href="https://first-allymfb.com/savings/"
+                class="w-full px-6 py-3 text-slate-600 text-sm border-b border-gray-200 hover:bg-gold hover:text-white transition-colors"
+                >Savings</a
+              >
+              <a
+                href="https://first-allymfb.com/investments/"
+                class="w-full px-6 py-3 text-slate-600 text-sm border-b border-gray-200 hover:bg-gold hover:text-white transition-colors"
+                >Investments</a
+              >
+              <a
+                href="https://first-allymfb.com/loans/"
+                class="w-full px-6 py-3 text-slate-600 text-sm hover:bg-gold hover:text-white transition-colors"
+                >Loans</a
+              >
+            </div>
+          </div>
+
+          <!-- E-Channels Accordion -->
+          <div class="w-full border-b border-gray-200">
+            <button
+              class="mobile-accordion-btn w-full flex items-center justify-between px-6 py-4 text-slate-800 font-medium text-left hover:bg-gold hover:text-white transition-colors"
+            >
+              E-Channels
+              <i
+                data-lucide="chevron-down"
+                class="w-5 h-5 transition-transform accordion-icon"
+              ></i>
+            </button>
+            <div
+              class="mobile-accordion-content hidden flex-col w-full bg-white"
+            >
+              <a
+                href="https://first-allymfb.com/e-channels/#ussd-banking"
+                class="w-full px-6 py-3 text-slate-600 text-sm border-b border-gray-200 hover:bg-gold hover:text-white transition-colors"
+                >USSD Banking</a
+              >
+              <a
+                href="https://first-allymfb.com/e-channels/#agency-banking"
+                class="w-full px-6 py-3 text-slate-600 text-sm border-b border-gray-200 hover:bg-gold hover:text-white transition-colors"
+                >Agency Banking</a
+              >
+              <a
+                href="https://first-allymfb.com/e-channels/#pos-banking"
+                class="w-full px-6 py-3 text-slate-600 text-sm border-b border-gray-200 hover:bg-gold hover:text-white transition-colors"
+                >POS Banking</a
+              >
+              <a
+                href="https://first-allymfb.com/e-channels/#debit-card"
+                class="w-full px-6 py-3 text-slate-600 text-sm border-b border-gray-200 hover:bg-gold hover:text-white transition-colors"
+                >Debit Card</a
+              >
+              <a
+                href="https://first-allymfb.com/e-channels/#internet-and-mobile-banking"
+                class="w-full px-6 py-3 text-slate-600 text-sm hover:bg-gold hover:text-white transition-colors"
+                >Internet and Mobile Banking</a
+              >
+            </div>
+          </div>
+
+          <!-- About Us Accordion -->
+          <div class="w-full border-b border-gray-200">
+            <button
+              class="mobile-accordion-btn w-full flex items-center justify-between px-6 py-4 text-slate-800 font-medium text-left hover:bg-gold hover:text-white transition-colors"
+            >
+              About Us
+              <i
+                data-lucide="chevron-down"
+                class="w-5 h-5 transition-transform accordion-icon"
+              ></i>
+            </button>
+            <div
+              class="mobile-accordion-content hidden flex-col w-full bg-white"
+            >
+              <a
+                href="https://first-allymfb.com/our-board/"
+                class="w-full px-6 py-3 text-slate-600 text-sm border-b border-gray-200 hover:bg-gold hover:text-white transition-colors"
+                >Our Board</a
+              >
+              <a
+                href="https://first-allymfb.com/our-management/"
+                class="w-full px-6 py-3 text-slate-600 text-sm hover:bg-gold hover:text-white transition-colors"
+                >Our Management</a
+              >
+            </div>
+          </div>
+
+          <a
+            href="https://first-allymfb.com/faqs/"
+            class="w-full px-6 py-4 text-slate-800 font-medium border-b border-gray-200 hover:bg-gold hover:text-white transition-colors"
+            >FAQs</a
+          >
+          <a
+            href="https://first-allymfb.com/careers/"
+            class="w-full px-6 py-4 text-slate-800 font-medium border-b border-gray-200 hover:bg-gold hover:text-white transition-colors"
+            >Careers</a
+          >
+          <a
+            href="https://first-allymfb.com/contact-us/"
+            class="w-full px-6 py-4 text-slate-800 font-medium border-b border-gray-200 hover:bg-gold hover:text-white transition-colors"
+            >Contact Us</a
+          >
+          <a
+            href="#"
+            class="w-full px-6 py-4 text-slate-800 font-medium border-b border-gray-200 hover:bg-gold hover:text-white transition-colors"
+            >Open an Account</a
+          >
+
+          <!-- Internet Banking Login Accordion -->
+          <div class="w-full">
+            <button
+              class="mobile-accordion-btn w-full flex items-center justify-between px-6 py-4 text-slate-800 font-medium text-left hover:bg-gold hover:text-white transition-colors"
+            >
+              Internet Banking Login
+              <i
+                data-lucide="chevron-down"
+                class="w-5 h-5 transition-transform accordion-icon"
+              ></i>
+            </button>
+            <div
+              class="mobile-accordion-content hidden flex-col w-full bg-white"
+            >
+              <a
+                href="https://firstallymfb.lucidbanking.com/login"
+                target="_blank"
+                class="w-full px-6 py-3 text-slate-600 text-sm border-b border-gray-200 hover:bg-gold hover:text-white transition-colors"
+                >Personal</a
+              >
+              <a
+                href="https://firstallymfb-corporate.lucidbanking.com/login"
+                target="_blank"
+                class="w-full px-6 py-3 text-slate-600 text-sm hover:bg-gold hover:text-white transition-colors"
+                >Corporate</a
+              >
+            </div>
+          </div>
+        </div>
       </div>
     </nav>
 
@@ -662,9 +924,13 @@
               <div class="flex gap-3">
                 <i data-lucide="mail" class="shrink-0 w-5 h-5 text-gold"></i>
                 <a
-                  href="mailto:info@first-allymfb.com"
+                  href="/cdn-cgi/l/email-protection#83eaede5ecc3e5eaf1f0f7aee2efeffaeee5e1ade0ecee"
                   class="hover:text-gold-500 transition-colors"
-                  >info@first-allymfb.com</a
+                  ><span
+                    class="__cf_email__"
+                    data-cfemail="70191e161f3016190203045d111c1c091d16125e131f1d"
+                    >[email&#160;protected]</span
+                  ></a
                 >
               </div>
             </div>
@@ -734,7 +1000,7 @@
               </li>
               <li>
                 <a
-                  href="mailto:info@first-allymfb.com"
+                  href="/cdn-cgi/l/email-protection#c9a0a7afa689afa0bbbabde4a8a5a5b0a4afabe7aaa6a4"
                   class="hover:text-gold-500 transition-colors"
                   >Complaints</a
                 >
@@ -1045,6 +1311,10 @@
       data-cfasync="false"
       src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"
     ></script>
+    <script
+      data-cfasync="false"
+      src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"
+    ></script>
     <script type="module">
       import { GoogleGenAI } from "@google/genai";
 
@@ -1072,6 +1342,36 @@
         }
         lucide.createIcons();
       });
+
+      // Mobile Accordion - Initialize after icons are created
+      setTimeout(() => {
+        const accordionButtons = document.querySelectorAll(
+          ".mobile-accordion-btn"
+        );
+        accordionButtons.forEach((button) => {
+          button.addEventListener("click", (e) => {
+            e.preventDefault();
+            const content = button.nextElementSibling;
+            const icon = button.querySelector(".accordion-icon");
+            const isHidden = content.classList.contains("hidden");
+
+            if (isHidden) {
+              content.classList.remove("hidden");
+              content.classList.add("flex");
+              if (icon) {
+                icon.style.transform = "rotate(180deg)";
+              }
+            } else {
+              content.classList.add("hidden");
+              content.classList.remove("flex");
+              if (icon) {
+                icon.style.transform = "rotate(0deg)";
+              }
+            }
+          });
+        });
+        lucide.createIcons();
+      }, 200);
 
       // Chat Widget
       const chatContainer = document.getElementById("chat-container");
@@ -1382,9 +1682,9 @@ If you don't know the answer, politely ask the user to contact customer support.
                 <div id="download-content">
                   <div class="grid md:grid-cols-12 gap-8">
                     <!-- Steps -->
-                    <div class="md:col-span-12 bg-gray-50 p-6 rounded-2xl h-fit">
+                    <div class="md:col-span-4 bg-gray-50 p-6 rounded-2xl h-fit">
                       <h3 class="font-bold text-lg mb-6 text-slate-800">Quick Steps to Open Your Corporate Account</h3>
-                      <div class="flex ">
+                      <div class="space-y-6">
                         <div class="relative pl-6 border-l-2 border-gray-200 pb-2">
                           <span class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-gold border-4 border-white shadow-sm"></span>
                           <h4 class="font-bold text-sm text-slate-900 mb-1">1. Download the Form Pack</h4>
@@ -1407,22 +1707,23 @@ If you don't know the answer, politely ask the user to contact customer support.
                     <div class="md:col-span-8 space-y-6">
                       <div class="flex flex-col sm:flex-row gap-4">
                         <a href="/assets/docs/FAMFB_Account_Opening_Form.pdf" download class="text-decoration-none flex-1">
-                          <div class="flex-1 border border-gray-200 rounded-xl p-4 flex items-center justify-between hover:border-gold transition-colors group cursor-pointer h-full">
-                            <div class="flex items-center gap-3">
-                              <div class="w-10 h-10 rounded bg-red-50 flex items-center justify-center text-red-500">
-                                <span class="font-bold text-xs">PDF</span>
-                              </div>
-                              <span class="text-sm font-semibold text-slate-700">Account Opening Form.pdf</span>
+                          
+                        <div class="flex-1 border border-gray-200 rounded-xl p-4 flex items-center justify-between hover:border-gold transition-colors group cursor-pointer">
+                          <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 rounded bg-red-50 flex items-center justify-center text-red-500">
+                              <span class="font-bold text-xs">PDF</span>
                             </div>
-                            <i data-lucide="download" class="w-[18px] h-[18px] text-gray-400 group-hover:text-gold"></i>
+                            <span class="text-sm font-semibold text-slate-700">Account Opening Form.pdf</span>
                           </div>
+                          <i data-lucide="download" class="w-[18px] h-[18px] text-gray-400 group-hover:text-gold"></i>
+                        </div>
                         </a>
 
                         <div class="flex-1 bg-dark-900 text-white rounded-xl p-4 flex flex-col justify-between relative overflow-hidden">
                           <p class="text-[10px] text-gray-400 mb-1">Prefer Email? Send your completed form to the email below.</p>
-                          <div class="bg-gold text-slate-900 font-bold text-xs px-3 py-1.5 rounded flex items-center justify-between mt-1 cursor-pointer hover:bg-gold-400 transition-colors" onclick="navigator.clipboard.writeText('operations@first-allymfb.com').then(() => alert('Email copied successfully!'))">
-                            <span>operations@first-allymfb.com</span>
-                            <i data-lucide="copy" class="w-3 h-3"></i>
+                          <div class="bg-gold text-slate-900 font-bold text-xs px-3 py-1.5 rounded flex items-center justify-between mt-1">
+                            <span class="" onclick="navigator.clipboard.writeText('operations@first-allymfb.com').then(() => alert('Email copied successfully!'))">operations@first-allymfb.com</span>
+                            <i data-lucide="link" class="w-3 h-3"></i>
                           </div>
                         </div>
                       </div>
@@ -1463,7 +1764,7 @@ If you don't know the answer, politely ask the user to contact customer support.
                       },
                       {
                         title: "Mandatory Account Information Form",
-                        desc: "This form captures mandatory additional business and compliance information.",
+                        desc: "This form captures mandatory additional business and compliance information required to complete your corporate account onboarding. Please download and fill it accurately.",
                         action: "download",
                         url: "/assets/docs/FAMFB_Corporate_Online_Banking_Form.pdf",
                       },
@@ -1527,11 +1828,12 @@ If you don't know the answer, politely ask the user to contact customer support.
                         </div>
                         ${
                           item.action === "download"
-                            ? `<div class="flex gap-2">
-                                <a href="${item.url}" class="text-decoration-none flex-1" target="_blank">
-                                  <button class="px-3 py-1.5 bg-dark-900 text-white text-xs font-bold rounded hover:bg-slate-800 transition-colors">Download</button>
-                                </a>
-                               </div>`
+                            ? `
+                          <div class="flex gap-2">
+                            <button class="px-3 py-1.5 bg-gold text-white text-xs font-bold rounded hover:bg-gold-700 transition-colors hidden">Fill Online</button>
+                            <a href=${item?.url} class="text-decoration-none flex-1" target="_blank"><button class="px-3 py-1.5 bg-dark-900 text-white text-xs font-bold rounded hover:bg-slate-800 transition-colors">Download</button></a>
+                          </div>
+                        `
                             : `<span class="text-[10px] text-gray-400 uppercase font-medium bg-gray-100 px-2 py-1 rounded">Required During Onboarding</span>`
                         }
                       </div>
@@ -1555,6 +1857,7 @@ If you don't know the answer, politely ask the user to contact customer support.
           </div>
         `;
       }
+
       function createRequestAccessModal() {
         return `
           <div class="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6">
@@ -1583,7 +1886,7 @@ If you don't know the answer, politely ask the user to contact customer support.
                   <!-- Download Section -->
                   <div>
                     <h4 class="font-bold text-sm text-slate-900 mb-2">Download & Submit Form</h4>
-                    <p class="text-xs text-gray-500 mb-4">Download the form, complete it at your convenience, and send it to the email provided."</p>
+                    <p class="text-xs text-gray-500 mb-4">Download the form, complete it in your framework, and upload it here or send it to the email provided.</p>
                     
                     <div class="flex flex-col sm:flex-row gap-4">
                       <a href="/assets/docs/FAMFB_Corporate_Online_Banking_Form.pdf" download class="text-decoration-none flex-1">
@@ -1599,10 +1902,10 @@ If you don't know the answer, politely ask the user to contact customer support.
                       </a>
 
                       <div class="flex-1 bg-dark-900 text-white rounded-xl p-4 flex flex-col justify-between relative overflow-hidden">
-                        <p class="text-[10px] text-gray-400 mb-1">Send your completed form to the email below</p>
-                        <div onclick="navigator.clipboard.writeText('operations@first-allymfb.com').then(() => alert('Email copied successfully!'))" class="bg-gold text-slate-900 font-bold text-xs px-3 py-1.5 rounded flex items-center justify-between mt-1 cursor-pointer hover:bg-gold-700 transition-colors">
-                          <span>operations@first-allymfb.com</span>
-                          <i data-lucide="copy" class="w-3 h-3"></i>
+                        <p class="text-[10px] text-gray-400 mb-1">Prefer Email? Send your completed form to the email below.</p>
+                        <div class="bg-gold text-slate-900 font-bold text-xs px-3 py-1.5 rounded flex items-center justify-between mt-1">
+                          <span class="cursor-pointer" onclick="navigator.clipboard.writeText('operations@first-allymfb.com').then(() => alert('Email copied successfully!'))">operations@first-allymfb.com</span>
+                          <i data-lucide="link" class="w-3 h-3"></i>
                         </div>
                       </div>
                     </div>
@@ -1629,14 +1932,14 @@ If you don't know the answer, politely ask the user to contact customer support.
                       Submit
                     </button>
                   </div>
-                </div>
+                 </div>
               </div>
             </div>
           </div>
         `;
       }
 
-      // Initialize Lucide icons
+      // Initialize Lucide Icons
       lucide.createIcons();
     </script>
   </body>
