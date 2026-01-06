@@ -508,17 +508,56 @@
                 </p>
 
                 <div class="flex flex-col sm:flex-row gap-4">
+                  <!-- Button 1: Open Corporate Account -->
                   <button
                     onclick="openModal('openAccount')"
-                    class="bg-gold hover:bg-gold-700 text-white px-6 py-2.5 rounded font-bold transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
+                    class="bg-gold hover:bg-gold-700 text-white px-6 py-2.5 rounded font-bold transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 flex items-center justify-center"
                   >
-                    Open Corporate Account
+                    <span>Open Corporate Account</span>
+
+                    <!-- Tooltip Wrapper -->
+                    <div class="relative group ml-2">
+                      <i
+                        data-lucide="help-circle"
+                        class="w-5 h-5 cursor-help opacity-90 hover:opacity-100"
+                      ></i>
+                      <!-- Tooltip Body -->
+                      <div
+                        class="absolute top-full right-0 sm:-right-4 mt-3 w-48 bg-dark-900 text-white text-xs font-medium px-3 py-2 rounded-lg shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50 text-center pointer-events-none"
+                      >
+                        New to First Ally? Start here.
+                        <!-- Tooltip Arrow -->
+                        <div
+                          class="absolute bottom-full right-1 sm:right-5 border-8 border-transparent border-b-dark-900"
+                        ></div>
+                      </div>
+                    </div>
                   </button>
+
+                  <!-- Button 2: Get Online Banking Access -->
                   <button
                     onclick="openModal('requestAccess')"
-                    class="bg-white border border-slate-200 hover:border-gold hover:text-gold text-slate-700 px-6 py-2.5 rounded font-bold transition-all shadow-sm"
+                    class="bg-white border border-slate-200 hover:border-gold hover:text-gold text-slate-700 px-6 py-2.5 rounded font-bold transition-all shadow-sm flex items-center justify-center"
                   >
-                    Get Online Banking Access
+                    <span>Get Online Banking Access</span>
+
+                    <!-- Tooltip Wrapper -->
+                    <div class="relative group ml-2">
+                      <i
+                        data-lucide="help-circle"
+                        class="w-5 h-5 cursor-help text-slate-400 hover:text-gold"
+                      ></i>
+                      <!-- Tooltip Body -->
+                      <div
+                        class="absolute top-full right-0 sm:-right-4 mt-3 w-56 bg-dark-900 text-white text-xs font-medium px-3 py-2 rounded-lg shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50 text-center pointer-events-none"
+                      >
+                        Already have an account? Get access.
+                        <!-- Tooltip Arrow -->
+                        <div
+                          class="absolute bottom-full right-1 sm:right-5 border-8 border-transparent border-b-dark-900"
+                        ></div>
+                      </div>
+                    </div>
                   </button>
                 </div>
               </div>
@@ -623,7 +662,7 @@
             >
           </div>
           <h2 class="text-4xl md:text-5xl font-bold text-slate-900 mb-12">
-            Our Benefits
+            What You Get
           </h2>
 
           <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 auto-rows-auto">
@@ -666,11 +705,13 @@
               class="lg:col-span-4 rounded-3xl p-8 relative overflow-hidden flex flex-col justify-between bg-white border border-gray-100 shadow-sm text-slate-900 min-h-[300px]"
             >
               <div class="relative z-10 max-w-lg mt-auto">
-                <h3 class="text-3xl font-bold">Fast</h3>
+                <h3 class="text-3xl font-bold">Fast Moves</h3>
                 <div class="bg-gray-200/50 p-6 rounded-xl mt-10">
                   <p class="text-slate-700 leading-relaxed font-medium">
-                    Swiftly moving money and services for large businesses, with
-                    secure, scalable solutions in corporate banking.
+                    Speedy transactions, quick turnaround on support, and
+                    responsive service keep your cash flow moving. Get your
+                    funds where you need them, when you need them, with no
+                    delay.
                   </p>
                 </div>
               </div>
@@ -1399,19 +1440,19 @@
       let chatSession = null;
 
       const SYSTEM_INSTRUCTION = `You are the Virtual Assistant for First Ally Microfinance Bank. 
-Your tone is professional, helpful, and concise. 
-You can help with:
-- Opening corporate accounts
-- Online banking access
-- General banking FAQs
-- Locations and contact info
+  Your tone is professional, helpful, and concise. 
+  You can help with:
+  - Opening corporate accounts
+  - Online banking access
+  - General banking FAQs
+  - Locations and contact info
 
-Information to know:
-- Locations: Jibowu, Lagos Island, Surulere, Bariga.
-- Contact: info@first-allymfb.com, +234 807 580 9060.
-- Services: Corporate Banking, Internet Banking, Loans, Savings.
+  Information to know:
+  - Locations: Jibowu, Lagos Island, Surulere, Bariga.
+  - Contact: info@first-allymfb.com, +234 807 580 9060.
+  - Services: Corporate Banking, Internet Banking, Loans, Savings.
 
-If you don't know the answer, politely ask the user to contact customer support.`;
+  If you don't know the answer, politely ask the user to contact customer support.`;
 
       function toggleChat() {
         isChatOpen = !isChatOpen;
@@ -1452,14 +1493,14 @@ If you don't know the answer, politely ask the user to contact customer support.
         div.className =
           role === "user" ? "flex justify-end" : "flex justify-start";
         div.innerHTML = `
-          <div class="max-w-[80%] rounded-2xl px-4 py-3 text-sm ${
-            role === "user"
-              ? "bg-gold text-white rounded-tr-none"
-              : "bg-white text-slate-700 shadow-sm border border-gray-100 rounded-tl-none"
-          }">
-            ${content}
-          </div>
-        `;
+            <div class="max-w-[80%] rounded-2xl px-4 py-3 text-sm ${
+              role === "user"
+                ? "bg-gold text-white rounded-tr-none"
+                : "bg-white text-slate-700 shadow-sm border border-gray-100 rounded-tl-none"
+            }">
+              ${content}
+            </div>
+          `;
         chatMessages.appendChild(div);
         scrollToBottom();
       }
@@ -1609,26 +1650,26 @@ If you don't know the answer, politely ask the user to contact customer support.
         const fileSize = (file.size / 1024).toFixed(2);
 
         const previewHTML = `
-          <div class="bg-white border border-gray-100 rounded-xl p-4 shadow-sm mt-4">
-            <div class="flex items-center justify-between mb-2">
-              <div class="flex items-center gap-3 overflow-hidden">
-                <div class="bg-red-100 p-2 rounded text-red-500">
-                  <i data-lucide="file-text" class="w-5 h-5"></i>
+            <div class="bg-white border border-gray-100 rounded-xl p-4 shadow-sm mt-4">
+              <div class="flex items-center justify-between mb-2">
+                <div class="flex items-center gap-3 overflow-hidden">
+                  <div class="bg-red-100 p-2 rounded text-red-500">
+                    <i data-lucide="file-text" class="w-5 h-5"></i>
+                  </div>
+                  <span class="text-sm font-medium text-slate-700 truncate">${fileName}</span>
                 </div>
-                <span class="text-sm font-medium text-slate-700 truncate">${fileName}</span>
+                <button onclick="removeFile(this)" class="text-gray-400 hover:text-red-500 transition-colors">
+                  <i data-lucide="trash-2" class="w-4 h-4"></i>
+                </button>
               </div>
-              <button onclick="removeFile(this)" class="text-gray-400 hover:text-red-500 transition-colors">
-                <i data-lucide="trash-2" class="w-4 h-4"></i>
-              </button>
-            </div>
-            <div class="flex items-center gap-3">
-              <div class="flex-1 h-1.5 bg-gray-100 rounded-full overflow-hidden">
-                <div class="h-full bg-gold transition-all duration-300 file-progress" style="width: 0%"></div>
+              <div class="flex items-center gap-3">
+                <div class="flex-1 h-1.5 bg-gray-100 rounded-full overflow-hidden">
+                  <div class="h-full bg-gold transition-all duration-300 file-progress" style="width: 0%"></div>
+                </div>
+                <span class="text-xs font-medium text-gray-500 progress-text">0%</span>
               </div>
-              <span class="text-xs font-medium text-gray-500 progress-text">0%</span>
             </div>
-          </div>
-        `;
+          `;
 
         const container = uploadArea.querySelector(".file-preview-container");
         if (container) {
@@ -1661,64 +1702,253 @@ If you don't know the answer, politely ask the user to contact customer support.
 
       function createOpenAccountModal() {
         return `
-          <div class="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6">
-            <div class="absolute inset-0 bg-slate-900/60 backdrop-blur-sm transition-opacity modal-background"></div>
-            <div class="relative w-full max-w-5xl bg-white rounded-3xl shadow-2xl overflow-hidden flex flex-col max-h-[90vh] animate-zoom-in">
-              <div class="p-6 sm:p-8 overflow-y-auto custom-scrollbar">
-                <div class="flex justify-between items-start mb-6">
-                  <h2 class="text-xl sm:text-2xl font-bold text-slate-900">Open a Corporate Account</h2>
-                  <button class="modal-close-btn p-2 hover:bg-gray-100 rounded-full transition-colors absolute top-6 right-6">
-                    <i data-lucide="x" class="w-6 h-6 text-slate-400 hover:text-slate-600"></i>
-                  </button>
-                </div>
+            <div class="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6">
+              <div class="absolute inset-0 bg-slate-900/60 backdrop-blur-sm transition-opacity modal-background"></div>
+              <div class="relative w-full max-w-5xl bg-white rounded-3xl shadow-2xl overflow-hidden flex flex-col max-h-[90vh] animate-zoom-in">
+                <div class="p-6 sm:p-8 overflow-y-auto custom-scrollbar">
+                  <div class="flex justify-between items-start mb-6">
+                    <h2 class="text-xl sm:text-2xl font-bold text-slate-900">Open a Corporate Account</h2>
+                    <button class="modal-close-btn p-2 hover:bg-gray-100 rounded-full transition-colors absolute top-6 right-6">
+                      <i data-lucide="x" class="w-6 h-6 text-slate-400 hover:text-slate-600"></i>
+                    </button>
+                  </div>
 
-                <!-- Tabs -->
-                <div class="flex border-b border-gray-200 mb-8">
-                  <button id="download-tab" class="pb-4 pr-6 text-sm font-semibold transition-colors relative text-slate-900">
-                    Download Account Opening Form
-                    <span class="tab-indicator absolute bottom-0 left-0 w-full h-0.5 bg-slate-900 rounded-t-full"></span>
-                  </button>
-                  <button id="online-tab" class="pb-4 px-6 text-sm font-semibold transition-colors relative text-gray-400 hover:text-gray-600">
-                    Self Onboarding (Online)
-                    <span class="tab-indicator hidden absolute bottom-0 left-0 w-full h-0.5 bg-slate-900 rounded-t-full"></span>
-                  </button>
-                </div>
+                  <!-- Tabs -->
+                  <div class="flex border-b border-gray-200 mb-8">
+                    <button id="download-tab" class="pb-4 pr-6 text-sm font-semibold transition-colors relative text-slate-900">
+                      Download Account Opening Form
+                      <span class="tab-indicator absolute bottom-0 left-0 w-full h-0.5 bg-slate-900 rounded-t-full"></span>
+                    </button>
+                    <button id="online-tab" class="pb-4 px-6 text-sm font-semibold transition-colors relative text-gray-400 hover:text-gray-600">
+                      Self Onboarding (Online)
+                      <span class="tab-indicator hidden absolute bottom-0 left-0 w-full h-0.5 bg-slate-900 rounded-t-full"></span>
+                    </button>
+                  </div>
 
-                <!-- Download Tab Content -->
-                <div id="download-content">
-                  <div class="grid md:grid-cols-12">
-                    <!-- Steps -->
-                    <div class="sm:col-span-4 md:col-span-12 bg-gray-50 p-6 rounded-2xl h-fit">
-                      <h3 class="font-bold text-lg mb-6 text-slate-800">Quick Steps to Open Your Corporate Account</h3>
-                      <div class="md:flex">
-                        <div class="relative pl-6 pb-2">
-                          <h4 class="font-bold text-sm text-slate-900 mb-1">1. Download the Form Pack</h4>
-                          <p class="text-xs text-gray-500 leading-relaxed">Everything you need to get started is inside.</p>
+                  <!-- Download Tab Content -->
+                  <div id="download-content">
+                    <div class="grid md:grid-cols-12">
+                      <!-- Steps -->
+                      <div class="sm:col-span-4 md:col-span-12 bg-gray-50 p-6 rounded-2xl h-fit">
+                        <h3 class="font-bold text-lg mb-6 text-slate-800">Quick Steps to Open Your Corporate Account</h3>
+                        <div class="md:flex">
+                          <div class="relative pl-6 pb-2">
+                            <h4 class="font-bold text-sm text-slate-900 mb-1">1. Download the Form Pack</h4>
+                            <p class="text-xs text-gray-500 leading-relaxed">Everything you need to get started is inside.</p>
+                          </div>
+                          <div class="relative pl-6 pb-2">
+                            
+                            <h4 class="font-bold text-sm text-slate-900 mb-1">2. Complete the Form + Attach Documents</h4>
+                            <p class="text-xs text-gray-500 leading-relaxed">Fill the form, sign where required and attach the needed documents.</p>
+                          </div>
+                          <div class="relative pl-6 border-gray-200">
+                            
+                            <h4 class="font-bold text-sm text-slate-900 mb-1">3. Submit to the Bank</h4>
+                            <p class="text-xs text-gray-500 leading-relaxed">Send your completed form to the email Provided</p>
+                          </div>
                         </div>
-                        <div class="relative pl-6 pb-2">
-                          
-                          <h4 class="font-bold text-sm text-slate-900 mb-1">2. Complete the Form + Attach Documents</h4>
-                          <p class="text-xs text-gray-500 leading-relaxed">Fill the form, sign where required and attach the needed documents.</p>
+                      </div>
+
+                      <!-- Actions -->
+                      <div class="md:col-span-12 space-y-6 p-6 bg-gray-200">
+                        <div class="flex sm:flex-row gap-4">
+                          <a href="/assets/docs/FAMFB_Account_Opening_Form.pdf" download class="text-decoration-none flex-1">
+                            
+                          <div class="flex-1 border border-gray-200 rounded-xl p-4 flex items-center justify-between hover:border-gold transition-colors group cursor-pointer bg-white">
+                            <div class="flex items-center gap-3">
+                              <div class="w-10 h-10 rounded bg-red-50 flex items-center justify-center text-red-500">
+                                <span class="font-bold text-xs">PDF</span>
+                              </div>
+                              <span class="text-sm font-semibold text-slate-700">FAMFB - Account Opening Form.pdf</span>
+                            </div>
+                            <i data-lucide="download" class="w-[18px] h-[18px] text-gray-400 group-hover:text-gold"></i>
+                          </div>
+                          </a>
+
+                          <div class="flex-1 bg-dark-900 text-white rounded-xl p-4 flex flex-col justify-between relative overflow-hidden">
+                            <p class="text-[10px] text-gray-400 mb-1">Send your completed form to the email below.</p>
+                            <div class="bg-gold text-slate-900 font-bold text-xs px-3 py-1.5 rounded flex items-center justify-between mt-1">
+                              <span class="" onclick="navigator.clipboard.writeText('operations@first-allymfb.com').then(() => alert('Email copied successfully!'))">operations@first-allymfb.com</span>
+                              <i data-lucide="copy" class="w-3 h-3"></i>
+                            </div>
+                          </div>
                         </div>
-                        <div class="relative pl-6 border-gray-200">
-                          
-                          <h4 class="font-bold text-sm text-slate-900 mb-1">3. Submit to the Bank</h4>
-                          <p class="text-xs text-gray-500 leading-relaxed">Send your completed form to the email Provided</p>
+
+                        <div class="space-y-2 file-upload-container hidden">
+                          <h4 class="text-sm font-bold text-slate-900">Upload Completed Form</h4>
+                          <div class="file-upload-area border-2 border-dashed border-gray-200 rounded-2xl p-8 flex flex-col items-center justify-center cursor-pointer hover:border-gold hover:bg-gold-50/10 transition-colors bg-gray-50 h-[200px]">
+                            <div class="bg-gold w-12 h-12 rounded-lg flex items-center justify-center mb-4 text-white">
+                              <i data-lucide="folder" class="w-6 h-6"></i>
+                            </div>
+                            <h4 class="font-bold text-slate-800 mb-1">Upload File</h4>
+                            <p class="text-xs text-gray-500 text-center max-w-xs">Supported formats: JPG, PNG, PDF. Maximum file size: 10MB.</p>
+                            <button class="mt-4 px-4 py-2 bg-white border border-gray-200 rounded-md text-xs font-semibold text-gray-600 shadow-sm">Choose File</button>
+                            <input type="file" class="file-upload-input hidden" accept=".pdf,.jpg,.jpeg,.png" />
+                          </div>
+                          <div class="file-preview-container"></div>
+                        </div>
+
+                        <div class="flex justify-end pt-4 hidden">
+                          <button onclick="closeModal()" class="bg-gold hover:bg-gold-700 text-white px-8 py-3 rounded-lg font-bold text-sm transition-colors shadow-lg">
+                            Submit
+                          </button>
                         </div>
                       </div>
                     </div>
+                  </div>
 
-                    <!-- Actions -->
-                    <div class="md:col-span-12 space-y-6 p-6 bg-gray-200">
-                      <div class="flex sm:flex-row gap-4">
-                        <a href="/assets/docs/FAMFB_Account_Opening_Form.pdf" download class="text-decoration-none flex-1">
-                          
-                        <div class="flex-1 border border-gray-200 rounded-xl p-4 flex items-center justify-between hover:border-gold transition-colors group cursor-pointer bg-white">
+                  <!-- Online Tab Content -->
+                  <div id="online-content" class="hidden animate-fade-in">
+                    <p class="text-sm text-gray-500 mb-6">For a seamless onboarding experience, ensure you have the following documents ready for upload.</p>
+                    
+                    <div class="space-y-4 max-h-[400px] overflow-y-auto pr-2 custom-scrollbar bg-gray-100 p-4 rounded-lg">
+                      ${[
+                        {
+                          title: "Board Resolution",
+                          subtitle:
+                            "(Required for Partnerships, Limited Liability Companies & Other Multi-Owner Businesses)",
+                          desc: "A Board Resolution on your company letterhead authorizing FAMFB to open the account, listing approved signatories, and signed by the Chairman/Director and Secretary.",
+                          action: "blank",
+                        },
+                        {
+                          title: "Mandatory Account Information Form",
+                          desc: "This form captures mandatory additional business and compliance information required to complete your corporate account onboarding. Please download and fill it accurately.",
+                          action: "download",
+                          url: "/assets/docs/FAMFB_Mandatory_Account_Information_form.pdf",
+                        },
+                        {
+                          title: "Corporate Reference Forms",
+                          desc: "Two reference forms completed by corporate organizations with active current accounts.",
+                          action: "download",
+                          url: "/assets/docs/FAMFB_Reference_Forms.pdf",
+                        },
+                        {
+                          title: "Passport Photographs",
+                          desc: "Two passport photographs of each signatory",
+                          action: "none",
+                        },
+                        {
+                          title: "Valid ID Cards",
+                          desc: "International Passport, Driver's License, Voter's Card",
+                          action: "none",
+                        },
+                        {
+                          title: "Certificate of Incorporation",
+                          desc: "Certified True Copy of Certificate of Incorporation & Memorandum & Articles of Association",
+                          action: "none",
+                        },
+                        {
+                          title: "Tax Identification Number (TIN)",
+                          desc: "Certified True Copy of Certificate of Incorporation & Memorandum & Articles of Association",
+                          action: "none",
+                        },
+                        {
+                          title: "Forms CO2 & CO7",
+                          desc: "Particulars of Directors (For Limited Liability Companies only)",
+                          action: "none",
+                        },
+                        {
+                          title: "NIN",
+                          desc: "National Identity Number of each signatory",
+                          action: "none",
+                        },
+                        {
+                          title: "Signature",
+                          desc: "Signature cards for all Signatories",
+                          action: "none",
+                        },
+                        {
+                          title: "Utility Bill",
+                          desc: "Electricity, Water, Waste (Not older than 3 months)",
+                          action: "none",
+                        },
+                      ]
+                        .map(
+                          (item) => `
+                        <div class="flex flex-col sm:flex-row sm:items-center justify-between p-4  rounded-xl ">
+                          <div class="mb-2 sm:mb-0">
+                            <h4 class="text-sm font-bold text-slate-800">${
+                              item.title
+                            } <span class="text-xs font-normal text-slate-800">${
+                            item?.subtitle || ""
+                          }</span></h4>
+                            
+                            <p class="text-xs text-gray-500 mt-0.5 max-w-md">${
+                              item.desc
+                            }</p>
+                          </div>
+                          ${
+                            item.action === "download"
+                              ? `
+                            <div class="flex gap-2">
+                              <button class="px-3 py-1.5 bg-gold text-white text-xs font-bold rounded hover:bg-gold-700 transition-colors hidden">Fill Online</button>
+                              <a href=${item?.url} class="text-decoration-none flex-1" target="_blank"><button class="px-3 py-1.5 bg-dark-900 text-white text-xs font-bold rounded hover:bg-slate-800 transition-colors">Download</button></a>
+                            </div>
+                          `
+                              : item.action === "blank"
+                              ? ``
+                              : `<span class="text-[10px] text-gray-400 uppercase font-medium bg-gray-100 px-2 py-1 rounded">Required During Onboarding</span>`
+                          }
+                        </div>
+                      `
+                        )
+                        .join("")}
+                    </div>
+
+                    <div class="mt-6 bg-[#FBEEBB] border border-gold-400/30 rounded-lg p-4 items-center justify-between gap-4">
+                      <div class="mb-4">
+                        <h5 class="text-sm text-gray-400 mb-1">Important Note</h5>
+                        <p class="text-[10px] text-slate-600">Please ensure all required documents are readily available before you begin. For items that include a download option, kindly download and complete them accurately, then keep them handy. You will be asked to upload them during the onboarding process.</p>
+                      </div>
+                      <button class="whitespace-nowrap bg-gold hover:bg-gold-700 text-white px-6 py-2.5 rounded-lg font-bold text-sm transition-colors shadow-md">
+                        Proceed to Signup
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          `;
+      }
+
+      function createRequestAccessModal() {
+        return `
+            <div class="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6">
+              <div class="absolute inset-0 bg-slate-900/60 backdrop-blur-sm transition-opacity modal-background"></div>
+              <div class="relative w-full max-w-5xl bg-white rounded-3xl shadow-2xl overflow-hidden flex flex-col max-h-[90vh] animate-zoom-in">
+                <div class="p-6 sm:p-8 overflow-y-auto custom-scrollbar">
+                  <div class="flex justify-between items-start mb-6">
+                    <h2 class="text-xl sm:text-2xl font-bold text-slate-900">Request Online Access for Your Corporate Account</h2>
+                    <button class="modal-close-btn p-2 hover:bg-gray-100 rounded-full transition-colors absolute top-6 right-6">
+                      <i data-lucide="x" class="w-6 h-6 text-slate-400 hover:text-slate-600"></i>
+                    </button>
+                  </div>
+
+                  <div class="space-y-8">
+                    <!-- Fill Online Option -->
+                    <div class="bg-gray-50 rounded-xl p-4 flex flex-col sm:flex-row items-center justify-between gap-4 border border-gray-200 hidden">
+                      <div>
+                        <h4 class="font-bold text-sm text-slate-900">Fill Request Form Online</h4>
+                        <p class="text-xs text-gray-500 mt-1">Submit your online request in minutes. A copy of the form will be emailed to you automatically.</p>
+                      </div>
+                      <button class="whitespace-nowrap px-6 py-2 bg-gold text-white font-bold text-xs rounded hover:bg-gold-700 transition-colors shadow-sm">
+                        Fill Online
+                      </button>
+                    </div>
+
+                    <!-- Download Section -->
+                    <div>
+                      <h4 class="font-bold text-sm text-slate-900 mb-2">Download & Submit Form</h4>
+                      <p class="text-xs text-gray-500 mb-4">Download the form, complete it at your convenience, and send it to the email provided</p>
+                      
+                      <div class="flex flex-col sm:flex-row gap-4">
+                        <a href="/assets/docs/FAMFB_Corporate_Online_Banking_Form.pdf" download class="text-decoration-none flex-1">
+                        <div class="flex-1 border border-gray-200 rounded-xl p-4 flex items-center justify-between hover:border-gold transition-colors group cursor-pointer">
                           <div class="flex items-center gap-3">
                             <div class="w-10 h-10 rounded bg-red-50 flex items-center justify-center text-red-500">
                               <span class="font-bold text-xs">PDF</span>
                             </div>
-                            <span class="text-sm font-semibold text-slate-700">FAMFB - Account Opening Form.pdf</span>
+                            <span class="text-sm font-semibold text-slate-700">FAMFB - Coporate Online Banking Form.pdf</span>
                           </div>
                           <i data-lucide="download" class="w-[18px] h-[18px] text-gray-400 group-hover:text-gold"></i>
                         </div>
@@ -1727,228 +1957,39 @@ If you don't know the answer, politely ask the user to contact customer support.
                         <div class="flex-1 bg-dark-900 text-white rounded-xl p-4 flex flex-col justify-between relative overflow-hidden">
                           <p class="text-[10px] text-gray-400 mb-1">Send your completed form to the email below.</p>
                           <div class="bg-gold text-slate-900 font-bold text-xs px-3 py-1.5 rounded flex items-center justify-between mt-1">
-                            <span class="" onclick="navigator.clipboard.writeText('operations@first-allymfb.com').then(() => alert('Email copied successfully!'))">operations@first-allymfb.com</span>
+                            <span class="cursor-pointer" onclick="navigator.clipboard.writeText('operations@first-allymfb.com').then(() => alert('Email copied successfully!'))">operations@first-allymfb.com</span>
                             <i data-lucide="copy" class="w-3 h-3"></i>
                           </div>
                         </div>
                       </div>
-
-                      <div class="space-y-2 file-upload-container hidden">
-                        <h4 class="text-sm font-bold text-slate-900">Upload Completed Form</h4>
-                        <div class="file-upload-area border-2 border-dashed border-gray-200 rounded-2xl p-8 flex flex-col items-center justify-center cursor-pointer hover:border-gold hover:bg-gold-50/10 transition-colors bg-gray-50 h-[200px]">
-                          <div class="bg-gold w-12 h-12 rounded-lg flex items-center justify-center mb-4 text-white">
-                            <i data-lucide="folder" class="w-6 h-6"></i>
-                          </div>
-                          <h4 class="font-bold text-slate-800 mb-1">Upload File</h4>
-                          <p class="text-xs text-gray-500 text-center max-w-xs">Supported formats: JPG, PNG, PDF. Maximum file size: 10MB.</p>
-                          <button class="mt-4 px-4 py-2 bg-white border border-gray-200 rounded-md text-xs font-semibold text-gray-600 shadow-sm">Choose File</button>
-                          <input type="file" class="file-upload-input hidden" accept=".pdf,.jpg,.jpeg,.png" />
-                        </div>
-                        <div class="file-preview-container"></div>
-                      </div>
-
-                      <div class="flex justify-end pt-4 hidden">
-                        <button onclick="closeModal()" class="bg-gold hover:bg-gold-700 text-white px-8 py-3 rounded-lg font-bold text-sm transition-colors shadow-lg">
-                          Submit
-                        </button>
-                      </div>
                     </div>
-                  </div>
-                </div>
 
-                <!-- Online Tab Content -->
-                <div id="online-content" class="hidden animate-fade-in">
-                  <p class="text-sm text-gray-500 mb-6">For a seamless onboarding experience, ensure you have the following documents ready for upload.</p>
-                  
-                  <div class="space-y-4 max-h-[400px] overflow-y-auto pr-2 custom-scrollbar bg-gray-100 p-4 rounded-lg">
-                    ${[
-                      {
-                        title: "Board Resolution",
-                        subtitle:
-                          "(Required for Partnerships, Limited Liability Companies & Other Multi-Owner Businesses)",
-                        desc: "A Board Resolution on your company letterhead authorizing FAMFB to open the account, listing approved signatories, and signed by the Chairman/Director and Secretary.",
-                        action: "blank",
-                      },
-                      {
-                        title: "Mandatory Account Information Form",
-                        desc: "This form captures mandatory additional business and compliance information required to complete your corporate account onboarding. Please download and fill it accurately.",
-                        action: "download",
-                        url: "/assets/docs/FAMFB_Mandatory_Account_Information_form.pdf",
-                      },
-                      {
-                        title: "Corporate Reference Forms",
-                        desc: "Two reference forms completed by corporate organizations with active current accounts.",
-                        action: "download",
-                        url: "/assets/docs/FAMFB_Reference_Forms.pdf",
-                      },
-                      {
-                        title: "Passport Photographs",
-                        desc: "Two passport photographs of each signatory",
-                        action: "none",
-                      },
-                      {
-                        title: "Valid ID Cards",
-                        desc: "International Passport, Driver's License, Voter's Card",
-                        action: "none",
-                      },
-                      {
-                        title: "Certificate of Incorporation",
-                        desc: "Certified True Copy of Certificate of Incorporation & Memorandum & Articles of Association",
-                        action: "none",
-                      },
-                      {
-                        title: "Tax Identification Number (TIN)",
-                        desc: "Certified True Copy of Certificate of Incorporation & Memorandum & Articles of Association",
-                        action: "none",
-                      },
-                      {
-                        title: "Forms CO2 & CO7",
-                        desc: "Particulars of Directors (For Limited Liability Companies only)",
-                        action: "none",
-                      },
-                      {
-                        title: "NIN",
-                        desc: "National Identity Number of each signatory",
-                        action: "none",
-                      },
-                      {
-                        title: "Signature",
-                        desc: "Signature cards for all Signatories",
-                        action: "none",
-                      },
-                      {
-                        title: "Utility Bill",
-                        desc: "Electricity, Water, Waste (Not older than 3 months)",
-                        action: "none",
-                      },
-                    ]
-                      .map(
-                        (item) => `
-                      <div class="flex flex-col sm:flex-row sm:items-center justify-between p-4  rounded-xl ">
-                        <div class="mb-2 sm:mb-0">
-                          <h4 class="text-sm font-bold text-slate-800">${
-                            item.title
-                          } <span class="text-xs font-normal text-slate-800">${
-                          item?.subtitle || ""
-                        }</span></h4>
-                          
-                          <p class="text-xs text-gray-500 mt-0.5 max-w-md">${
-                            item.desc
-                          }</p>
+                    <!-- Upload Section -->
+                    <div class="file-upload-container hidden">
+                      <h4 class="font-bold text-sm text-slate-900 mb-2">Upload Form</h4>
+                      <div class="file-upload-area border-2 border-dashed border-gray-200 rounded-2xl p-8 flex flex-col items-center justify-center cursor-pointer hover:border-gold hover:bg-gold-50/10 transition-colors bg-gray-50 h-[200px]">
+                        <div class="bg-gold w-12 h-12 rounded-lg flex items-center justify-center mb-4 text-white">
+                          <i data-lucide="folder" class="w-6 h-6"></i>
                         </div>
-                        ${
-                          item.action === "download"
-                            ? `
-                          <div class="flex gap-2">
-                            <button class="px-3 py-1.5 bg-gold text-white text-xs font-bold rounded hover:bg-gold-700 transition-colors hidden">Fill Online</button>
-                            <a href=${item?.url} class="text-decoration-none flex-1" target="_blank"><button class="px-3 py-1.5 bg-dark-900 text-white text-xs font-bold rounded hover:bg-slate-800 transition-colors">Download</button></a>
-                          </div>
-                        `
-                            : item.action === "blank"
-                            ? ``
-                            : `<span class="text-[10px] text-gray-400 uppercase font-medium bg-gray-100 px-2 py-1 rounded">Required During Onboarding</span>`
-                        }
+                        <h4 class="font-bold text-slate-800 mb-1">Upload File</h4>
+                        <p class="text-xs text-gray-500 text-center max-w-xs">Supported formats: JPG, PNG, PDF. Maximum file size: 10MB.</p>
+                        <button class="mt-4 px-4 py-2 bg-white border border-gray-200 rounded-md text-xs font-semibold text-gray-600 shadow-sm">Choose File</button>
+                        <input type="file" class="file-upload-input hidden" accept=".pdf,.jpg,.jpeg,.png" />
                       </div>
-                    `
-                      )
-                      .join("")}
-                  </div>
-
-                  <div class="mt-6 bg-[#FBEEBB] border border-gold-400/30 rounded-lg p-4 items-center justify-between gap-4">
-                    <div class="mb-4">
-                      <h5 class="text-sm text-gray-400 mb-1">Important Note</h5>
-                      <p class="text-[10px] text-slate-600">Please ensure all required documents are readily available before you begin. For items that include a download option, kindly download and complete them accurately, then keep them handy. You will be asked to upload them during the onboarding process.</p>
+                      <div class="file-preview-container"></div>
                     </div>
-                    <button class="whitespace-nowrap bg-gold hover:bg-gold-700 text-white px-6 py-2.5 rounded-lg font-bold text-sm transition-colors shadow-md">
-                      Proceed to Signup
-                    </button>
+
+                    <!-- Footer Actions -->
+                    <div class="flex justify-end pt-4 border-t border-gray-100 hidden">
+                      <button onclick="closeModal()" class="bg-gold hover:bg-gold-700 text-white px-8 py-3 rounded-lg font-bold text-sm transition-colors shadow-lg">
+                        Submit
+                      </button>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
-        `;
-      }
-
-      function createRequestAccessModal() {
-        return `
-          <div class="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6">
-            <div class="absolute inset-0 bg-slate-900/60 backdrop-blur-sm transition-opacity modal-background"></div>
-            <div class="relative w-full max-w-5xl bg-white rounded-3xl shadow-2xl overflow-hidden flex flex-col max-h-[90vh] animate-zoom-in">
-              <div class="p-6 sm:p-8 overflow-y-auto custom-scrollbar">
-                <div class="flex justify-between items-start mb-6">
-                  <h2 class="text-xl sm:text-2xl font-bold text-slate-900">Request Online Access for Your Corporate Account</h2>
-                  <button class="modal-close-btn p-2 hover:bg-gray-100 rounded-full transition-colors absolute top-6 right-6">
-                    <i data-lucide="x" class="w-6 h-6 text-slate-400 hover:text-slate-600"></i>
-                  </button>
-                </div>
-
-                <div class="space-y-8">
-                  <!-- Fill Online Option -->
-                  <div class="bg-gray-50 rounded-xl p-4 flex flex-col sm:flex-row items-center justify-between gap-4 border border-gray-200 hidden">
-                    <div>
-                      <h4 class="font-bold text-sm text-slate-900">Fill Request Form Online</h4>
-                      <p class="text-xs text-gray-500 mt-1">Submit your online request in minutes. A copy of the form will be emailed to you automatically.</p>
-                    </div>
-                    <button class="whitespace-nowrap px-6 py-2 bg-gold text-white font-bold text-xs rounded hover:bg-gold-700 transition-colors shadow-sm">
-                      Fill Online
-                    </button>
-                  </div>
-
-                  <!-- Download Section -->
-                  <div>
-                    <h4 class="font-bold text-sm text-slate-900 mb-2">Download & Submit Form</h4>
-                    <p class="text-xs text-gray-500 mb-4">Download the form, complete it at your convenience, and send it to the email provided</p>
-                    
-                    <div class="flex flex-col sm:flex-row gap-4">
-                      <a href="/assets/docs/FAMFB_Corporate_Online_Banking_Form.pdf" download class="text-decoration-none flex-1">
-                      <div class="flex-1 border border-gray-200 rounded-xl p-4 flex items-center justify-between hover:border-gold transition-colors group cursor-pointer">
-                        <div class="flex items-center gap-3">
-                          <div class="w-10 h-10 rounded bg-red-50 flex items-center justify-center text-red-500">
-                            <span class="font-bold text-xs">PDF</span>
-                          </div>
-                          <span class="text-sm font-semibold text-slate-700">FAMFB - Coporate Online Banking Form.pdf</span>
-                        </div>
-                        <i data-lucide="download" class="w-[18px] h-[18px] text-gray-400 group-hover:text-gold"></i>
-                      </div>
-                      </a>
-
-                      <div class="flex-1 bg-dark-900 text-white rounded-xl p-4 flex flex-col justify-between relative overflow-hidden">
-                        <p class="text-[10px] text-gray-400 mb-1">Send your completed form to the email below.</p>
-                        <div class="bg-gold text-slate-900 font-bold text-xs px-3 py-1.5 rounded flex items-center justify-between mt-1">
-                          <span class="cursor-pointer" onclick="navigator.clipboard.writeText('operations@first-allymfb.com').then(() => alert('Email copied successfully!'))">operations@first-allymfb.com</span>
-                          <i data-lucide="copy" class="w-3 h-3"></i>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                  <!-- Upload Section -->
-                  <div class="file-upload-container hidden">
-                    <h4 class="font-bold text-sm text-slate-900 mb-2">Upload Form</h4>
-                    <div class="file-upload-area border-2 border-dashed border-gray-200 rounded-2xl p-8 flex flex-col items-center justify-center cursor-pointer hover:border-gold hover:bg-gold-50/10 transition-colors bg-gray-50 h-[200px]">
-                      <div class="bg-gold w-12 h-12 rounded-lg flex items-center justify-center mb-4 text-white">
-                        <i data-lucide="folder" class="w-6 h-6"></i>
-                      </div>
-                      <h4 class="font-bold text-slate-800 mb-1">Upload File</h4>
-                      <p class="text-xs text-gray-500 text-center max-w-xs">Supported formats: JPG, PNG, PDF. Maximum file size: 10MB.</p>
-                      <button class="mt-4 px-4 py-2 bg-white border border-gray-200 rounded-md text-xs font-semibold text-gray-600 shadow-sm">Choose File</button>
-                      <input type="file" class="file-upload-input hidden" accept=".pdf,.jpg,.jpeg,.png" />
-                    </div>
-                    <div class="file-preview-container"></div>
-                  </div>
-
-                  <!-- Footer Actions -->
-                  <div class="flex justify-end pt-4 border-t border-gray-100 hidden">
-                    <button onclick="closeModal()" class="bg-gold hover:bg-gold-700 text-white px-8 py-3 rounded-lg font-bold text-sm transition-colors shadow-lg">
-                      Submit
-                    </button>
-                  </div>
-                 </div>
-              </div>
-            </div>
-          </div>
-        `;
+          `;
       }
 
       // Initialize Lucide Icons
