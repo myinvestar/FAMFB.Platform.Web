@@ -254,10 +254,15 @@
         <div class="hidden lg:flex items-center gap-4">
           <!-- Open Account Button: Hidden on smaller laptops (lg), visible on larger screens (xl) -->
           <button
-            onclick="openModal('openAccount')"
             class="hidden xl:block bg-gold hover:bg-gold-700 text-white px-6 py-2.5 rounded-sm font-bold transition-colors text-sm shadow-md whitespace-nowrap"
           >
-            Open an Account
+            <a
+              href="https://firstallymfb-corporate.lucidbanking.com/login"
+              target="_blank"
+              class="text-decoration-none"
+            >
+              Login
+            </a>
           </button>
 
           <!-- Internet Banking Login Dropdown -->
@@ -785,6 +790,35 @@
                 You to the Next Level
               </h2>
             </div>
+            <!-- Button 1: Open Corporate Account -->
+            <a
+              href="https://firstallymfb-corporate.lucidbanking.com/login"
+              target="_blank"
+            >
+              <button
+                class="bg-gold hover:bg-gold-700 text-white px-6 py-2.5 rounded font-bold transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 flex items-center justify-center"
+              >
+                <span>Open Corporate Account</span>
+
+                <!-- Tooltip Wrapper -->
+                <div class="relative group ml-2">
+                  <i
+                    data-lucide="help-circle"
+                    class="w-5 h-5 cursor-help opacity-90 hover:opacity-100"
+                  ></i>
+                  <!-- Tooltip Body -->
+                  <div
+                    class="absolute top-full right-0 sm:-right-4 mt-3 w-48 bg-dark-900 text-white text-xs font-medium px-3 py-2 rounded-lg shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50 text-center pointer-events-none"
+                  >
+                    Access your online banking now.
+                    <!-- Tooltip Arrow -->
+                    <div
+                      class="absolute bottom-full right-1 sm:right-5 border-8 border-transparent border-b-dark-900"
+                    ></div>
+                  </div>
+                </div>
+              </button>
+            </a>
           </div>
 
           <div class="flex flex-col gap-8">
