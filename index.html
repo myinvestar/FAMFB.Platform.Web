@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -277,15 +277,15 @@
               class="absolute top-full right-0 mt-0 w-48 bg-dark-900 shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50 py-2 rounded-b-md"
             >
               <a
-                href="https://firstallymfb.lucidbanking.com/login"
+                href="https://personaltrustmfb.qoreonline.com/login"
                 target="_blank"
-                class="block px-6 py-3 text-sm text-gold font-bold hover:bg-white/10 transition-colors"
+                class="block px-6 py-3 text-sm text-white font-bold hover:bg-white/10 transition-colors"
                 >Personal</a
               >
               <a
                 href="/"
                 target="_blank"
-                class="block px-6 py-3 text-sm text-white font-bold hover:bg-white/10 transition-colors"
+                class="block px-6 py-3 text-sm text-gold font-bold hover:bg-white/10 transition-colors"
                 >Corporate</a
               >
             </div>
@@ -473,7 +473,9 @@
         <div class="absolute inset-0 -z-30">
           <div
             class="absolute inset-0 -z-50 bg-cover bg-center opacity-20"
-            style="background-image: url('/assets/Clip path group.png')"
+            style="
+              background-image: url(&quot;/assets/Clip path group.png&quot;);
+            "
           ></div>
         </div>
 
@@ -884,7 +886,7 @@
               <div class="absolute top-0 right-0 w-full h-full">
                 <div
                   class="absolute inset-0 bg-cover bg-center opacity-30"
-                  style="background-image: url('/assets/Layer 1.png')"
+                  style="background-image: url(&quot;/assets/Layer 1.png&quot;)"
                 ></div>
               </div>
 
@@ -1178,7 +1180,7 @@
             >
               Newsletter Subscription
             </h4>
-            <form class="space-y-4" onsubmit="event.preventDefault();">
+            <form class="space-y-4" onsubmit="event.preventDefault()">
               <input
                 type="text"
                 placeholder="Your name"
@@ -1427,7 +1429,7 @@
       // Mobile Accordion - Initialize after icons are created
       setTimeout(() => {
         const accordionButtons = document.querySelectorAll(
-          ".mobile-accordion-btn"
+          ".mobile-accordion-btn",
         );
         accordionButtons.forEach((button) => {
           button.addEventListener("click", (e) => {
@@ -1904,8 +1906,8 @@
                             <h4 class="text-sm font-bold text-slate-800">${
                               item.title
                             } <span class="text-xs font-normal text-slate-800">${
-                            item?.subtitle || ""
-                          }</span></h4>
+                              item?.subtitle || ""
+                            }</span></h4>
                             
                             <p class="text-xs text-gray-500 mt-0.5 max-w-md">${
                               item.desc
@@ -1920,11 +1922,11 @@
                             </div>
                           `
                               : item.action === "blank"
-                              ? ``
-                              : `<span class="text-[10px] text-gray-400 uppercase font-medium bg-gray-100 px-2 py-1 rounded">Required During Onboarding</span>`
+                                ? ``
+                                : `<span class="text-[10px] text-gray-400 uppercase font-medium bg-gray-100 px-2 py-1 rounded">Required During Onboarding</span>`
                           }
                         </div>
-                      `
+                      `,
                         )
                         .join("")}
                     </div>
@@ -1934,9 +1936,11 @@
                         <h5 class="text-sm text-gray-400 mb-1">Important Note</h5>
                         <p class="text-[10px] text-slate-600">Please ensure all required documents are readily available before you begin. For items that include a download option, kindly download and complete them accurately, then keep them handy. You will be asked to upload them during the onboarding process.</p>
                       </div>
+                      <a href="https://firstallymfb-corporate.lucidbanking.com/auth/onboarding/choose-account" class="text-decoration-none">
                       <button class="whitespace-nowrap bg-gold hover:bg-gold-700 text-white px-6 py-2.5 rounded-lg font-bold text-sm transition-colors shadow-md">
                         Proceed to Signup
                       </button>
+                      </a>
                     </div>
                   </div>
                 </div>
